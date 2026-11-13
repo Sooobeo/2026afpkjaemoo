@@ -1,0 +1,98 @@
+[
+  {
+    "case": "2027_7.5억",
+    "start": "2027-06",
+    "end": "2032-06",
+    "first_monthly_deficit": {
+      "month": "2027-12",
+      "value": -5.712304029274264
+    },
+    "first_monthend_protected_breach": {
+      "month": "2031-07",
+      "value": -58.998043012872586
+    },
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -64.02576277601662,
+    "ending_free": -773.8530966760582,
+    "june2033_surplus": null
+  },
+  {
+    "case": "2030_7.5억",
+    "start": "2030-06",
+    "end": "2035-06",
+    "first_monthly_deficit": {
+      "month": "2030-10",
+      "value": -0.10203901869866172
+    },
+    "first_monthend_protected_breach": {
+      "month": "2031-07",
+      "value": -14.341800698198313
+    },
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -56.07637833259335,
+    "ending_free": -1831.061677995226,
+    "june2033_surplus": -31.45269912825816
+  },
+  {
+    "case": "2031_7.5억",
+    "start": "2031-06",
+    "end": "2036-06",
+    "first_monthly_deficit": {
+      "month": "2031-10",
+      "value": -0.7889599344474618
+    },
+    "first_monthend_protected_breach": {
+      "month": "2031-08",
+      "value": -4.525022346385413
+    },
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -57.882786034619926,
+    "ending_free": -2006.0971261430832,
+    "june2033_surplus": -20.576693046032233
+  },
+  {
+    "case": "2031_6.3억_기본",
+    "start": "2031-06",
+    "end": "2036-06",
+    "first_monthly_deficit": {
+      "month": "2036-03",
+      "value": -0.09920818056856717
+    },
+    "first_monthend_protected_breach": null,
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -3.293395190515426,
+    "ending_free": 4353.5920604119165,
+    "june2033_surplus": 34.01269779807227
+  },
+  {
+    "case": "2031_6.3억_7%돌봄상승",
+    "start": "2031-06",
+    "end": "2036-06",
+    "first_monthly_deficit": {
+      "month": "2032-11",
+      "value": -0.3814847912905748
+    },
+    "first_monthend_protected_breach": null,
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -45.68147760209564,
+    "ending_free": 1201.1822627547908,
+    "june2033_surplus": -7.538612434324648
+  },
+  {
+    "case": "2031_6.3억_비거래복합",
+    "start": "2031-06",
+    "end": "2036-06",
+    "first_monthly_deficit": {
+      "month": "2032-11",
+      "value": -0.3814847912905748
+    },
+    "first_monthend_protected_breach": {
+      "month": "2033-07",
+      "value": -13.462908728572074
+    },
+    "first_monthend_cash_breach": null,
+    "ending_surplus": -45.68147760209564,
+    "ending_free": -1197.8177372452083,
+    "june2033_surplus": -7.538612434324648
+  }
+]

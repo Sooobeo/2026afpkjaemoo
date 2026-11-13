@@ -1,0 +1,169 @@
+{
+  "lower": 0.0,
+  "upper": 40000.0,
+  "resolution": 100.0,
+  "scope": "지정한 유한 후보 격자, 연속 범위의 최적값을 뜻하지 않음",
+  "evaluations": 154,
+  "loan": 15300.0,
+  "approval_status": "UNKNOWN",
+  "status": "FOUND",
+  "reason": "오름차순으로 검사한 지정 격자에서 첫 수치 통과액. 은행 승인 아님",
+  "constraints": [
+    {
+      "rule_id": "CASH_NONNEGATIVE",
+      "label": "총현금 지급 가능",
+      "status": "PASS",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": 0,
+      "unit": "만원",
+      "cause": "표시된 기간의 월말·등록 사건에서 기준 충족",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "PROTECTED_FUNDS",
+      "label": "비상·목적자금 유지",
+      "status": "PASS",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": 0,
+      "unit": "만원",
+      "cause": "표시된 기간의 월말·등록 사건에서 기준 충족",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "TRANSACTION_LIQUIDITY",
+      "label": "사건별 지급일 유동성",
+      "status": "PASS",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": 0,
+      "unit": "만원",
+      "cause": "등록된 사건별 현금 지급 가능",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "RETIREMENT_SAVING",
+      "label": "월 은퇴저축 유지",
+      "status": "PASS",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": 0,
+      "unit": "만원",
+      "cause": "월 100만 원 납입 여부. 노후 충분성과 별개",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "MONTHLY_SURPLUS",
+      "label": "월수지 적자",
+      "status": "FAIL",
+      "blocking": false,
+      "first_breach_at": "2028-04-30",
+      "amount": 3.593188048323936,
+      "unit": "만원",
+      "cause": "일시 적자는 준비현금으로 충당할 수 있으므로 단독 탈락 조건이 아님",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "LOAN_APPROVAL",
+      "label": "실제 대출 승인",
+      "status": "UNKNOWN",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": null,
+      "unit": "만원",
+      "cause": "승인액·확인 증빙이 없음. 계산상 대출은 은행 승인액이 아님",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "REPAYMENT_LIMIT",
+      "label": "고객 합의 상환부담",
+      "status": "UNKNOWN",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": null,
+      "unit": "만원",
+      "cause": "합의한 한도·분자·분모·근거가 없거나 지원하지 않는 부채. 규제 DSR와 별개",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "POLICY_VALIDITY",
+      "label": "적용일 기준 제도 확인",
+      "status": "UNKNOWN",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": null,
+      "unit": "만원",
+      "cause": "과거 설정 재현과 실행일의 제도·지원 적격성은 별도 확인",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "EXECUTION_PREREQUISITES",
+      "label": "매물·임대차·송금 확인",
+      "status": "UNKNOWN",
+      "blocking": true,
+      "first_breach_at": null,
+      "amount": null,
+      "unit": "만원",
+      "cause": "추가 확인: lease, parent_transfer, property",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    },
+    {
+      "rule_id": "RETIREMENT_SUFFICIENCY",
+      "label": "노후자금 충분성",
+      "status": "NOT_EVALUATED",
+      "blocking": false,
+      "first_breach_at": null,
+      "amount": null,
+      "unit": "만원",
+      "cause": "연금 예상액·수급일·목표생활비·장기 인출경로 미확정",
+      "evidence_refs": [],
+      "evaluated_period": {
+        "start": "2026-11-30",
+        "end": "2036-06"
+      }
+    }
+  ],
+  "scenario_id": "candidate_60000",
+  "mode": "historical_replay",
+  "analysis_end": "2036-06",
+  "input_hash": "1a197e1ef44964bf28517a12bbd86c8195fe57f2af8381d9ddc05abe6f1446e3",
+  "code_version": "1.0.0",
+  "code_hash": "c745716ce367d85f4119ff38c857c3702405628c8aa301675f6ca7b6a760161a"
+}

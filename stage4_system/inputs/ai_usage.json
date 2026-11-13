@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "tools": [
+    {
+      "tool_name": "Codex",
+      "model": null,
+      "version": null,
+      "plan": null,
+      "used_on": "2026-11-13",
+      "purpose": "4단계 계산 도구의 코드 작성·자료 대조·자동 검사",
+      "note": "확인된 도구명만 기록했습니다. 정확한 모델·버전·요금제는 참가자가 확인해야 합니다."
+    }
+  ],
+  "usage": [
+    {
+      "stage": "4단계 도구 구현",
+      "actual_prompt": "이제 만들어봐 관련 파일 폴더는 새로 만들고",
+      "context": "앞서 작성한 hw/4단계_시스템_구현계획.md에 따른 구현 요청",
+      "response_summary": "독립 폴더에 계산 엔진·입력 검증·대안/스트레스 비교·보고서·기준계획 초안·검사를 생성",
+      "human_judgment": null,
+      "human_review_status": "PENDING",
+      "artifacts": ["afpk/", "inputs/", "tests/", "outputs/latest/report.html"]
+    }
+  ],
+  "verification": [
+    {
+      "subject": "산전 바우처 적격 비용",
+      "method": "원모델의 모든 월별 숫자 열과 별도 회귀검사 대조",
+      "found_issue": "산전진료와 다른 비용이 같은 달에 있으면 바우처가 부적격 비용에도 적용될 수 있었음",
+      "correction": "월별 적격 산전진료 기본액 18.75를 명시하고 물가환산 한도를 적용",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    },
+    {
+      "subject": "월말·기초잔액·지급일 구분",
+      "method": "월중 지출과 기초현금 부족의 별도 인수검사",
+      "found_issue": "월말 합계를 개별 거래일로 분류하거나 첫 월급이 기초 보호기준 부족을 가릴 수 있었음",
+      "correction": "opening/monthend/event를 분리하고 기초잔액을 현금·보호자금 검사에 포함",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    },
+    {
+      "subject": "계약·잔금 출력 누락",
+      "method": "CSV·HTML 내 데이터와 계산 이벤트의 통합검사",
+      "found_issue": "보고서 이벤트 ID와 엔진의 builtin 접두사 불일치로 요약 금액이 비어 있었음",
+      "correction": "동일 사건을 찾아 출력하고 통합검사로 금액 일치를 확인",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    }
+  ],
+  "summary": {
+    "most_useful_stage": "입력·계산·보고서 분리 구현과 기존 장부 회귀검사",
+    "human_decisions": null,
+    "improvement_evidence": "실행 결과·검사 코드·발견 및 수정 기록을 함께 보존. 참가자의 최종 검토는 별도 필요"
+  },
+  "note": "이번 구현 요청의 실제 프롬프트와 실행한 자동 검사를 기록했습니다. 참가자의 선택·직접 검증, 모델·버전·요금제는 확인되지 않아 채우지 않았습니다. 공모전 제출 전 보완해야 합니다."
+}

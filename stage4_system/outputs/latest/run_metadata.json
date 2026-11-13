@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "created_at": "2026-11-13T13:14:57.810937+09:00",
+  "input_hash": "1a197e1ef44964bf28517a12bbd86c8195fe57f2af8381d9ddc05abe6f1446e3",
+  "code_version": "1.0.0",
+  "code_hash": "c745716ce367d85f4119ff38c857c3702405628c8aa301675f6ca7b6a760161a",
+  "policy_version": "case-snapshot-2026-11-07-v1",
+  "scenarios": 12,
+  "stress_cases": 110,
+  "result_hash": "9b97f05053d5caae040eed6cce398203ae90fc8ca69393cf461267054a5c2d03",
+  "numeric_policy": "Decimal 정밀도 36 계산, 만원 단위; 출력 숫자는 float, 중간 금액 반올림 없음",
+  "law_status": "제공된 과거 설정과 가정. 실행일의 현행 법령·승인 별도 확인"
+}

@@ -1,0 +1,362 @@
+{
+  "case_id": "kim-lee-fictional-2026",
+  "schema_version": "1.0",
+  "as_of_date": "2026-11-30",
+  "start_month": "2026-12",
+  "price_base_month": "2026-11",
+  "currency": "KRW",
+  "amount_unit": "만원",
+  "customer": {
+    "husband": {
+      "name": "김도윤",
+      "age": 34,
+      "occupation": "대기업 IT 개발자"
+    },
+    "wife": {
+      "name": "이서연",
+      "age": 32,
+      "occupation": "지방직 공무원"
+    },
+    "fictional": true,
+    "priority": [
+      "회복·진료·필수 돌봄과 비상현금",
+      "은퇴저축 유지",
+      "실행 가능한 주택 조건"
+    ]
+  },
+  "initial": {
+    "cash": 8000,
+    "stock": 2500,
+    "pension": 1500,
+    "rental_deposit": 30000,
+    "rental_debt": 10000
+  },
+  "income": {
+    "husband": 570,
+    "wife": 280,
+    "leave_tiers": [
+      250,
+      200,
+      160
+    ],
+    "leave_contribution": 31.5,
+    "settlement_retention": 5
+  },
+  "dates": {
+    "birth_month": "2028-04",
+    "maternity_start": "2028-04",
+    "maternity_end": "2028-06",
+    "leave_start": "2028-07",
+    "leave_end": "2029-06",
+    "nursery_start": "2029-06",
+    "return_month": "2029-07"
+  },
+  "budget": {
+    "adult_before": 480,
+    "adult_after": 405,
+    "child": 80,
+    "prenatal_insurance": 8,
+    "prenatal_start": "2027-12",
+    "care_early": 20,
+    "care_late": 60,
+    "nursery": 10,
+    "rent_interest": 30,
+    "owned_maintenance": 10,
+    "retirement": 100,
+    "emergency_initial": 3100,
+    "emergency_later": 3400,
+    "birth_buffer": 120,
+    "trade_buffer": 200
+  },
+  "assumptions": {
+    "inflation": 0.02,
+    "parent_support": 10000,
+    "retirement_return": 0,
+    "stock_return": 0,
+    "house_price_growth": 0
+  },
+  "birth_expenses": [
+    {
+      "month": "2027-04",
+      "amount": 16.666666666666668,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-05",
+      "amount": 16.666666666666668,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-06",
+      "amount": 16.666666666666668,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-08",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-09",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-10",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-11",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-12",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-01",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-02",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-03",
+      "amount": 18.75,
+      "source_id": "L1"
+    },
+    {
+      "month": "2027-12",
+      "amount": 50,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-02",
+      "amount": 125,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-03",
+      "amount": 200,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-04",
+      "amount": 550,
+      "source_id": "L1"
+    },
+    {
+      "month": "2028-05",
+      "amount": 255,
+      "source_id": "L1"
+    }
+  ],
+  "vouchers": [
+    {
+      "id": "prenatal_voucher",
+      "amount": 100,
+      "eligible_base_amount": 18.75,
+      "eligible_months": [
+        "2027-08",
+        "2027-09",
+        "2027-10",
+        "2027-11",
+        "2027-12",
+        "2028-01",
+        "2028-02",
+        "2028-03"
+      ],
+      "source_id": "L1"
+    },
+    {
+      "id": "first_meeting_voucher",
+      "amount": 200,
+      "eligible_months": [
+        "2028-04"
+      ],
+      "source_id": "L1"
+    }
+  ],
+  "support_schedule": [
+    {
+      "start": "2028-04",
+      "end": "2029-03",
+      "amount": 110,
+      "source_id": "L1"
+    },
+    {
+      "start": "2029-04",
+      "end": "2029-05",
+      "amount": 60,
+      "source_id": "L1"
+    },
+    {
+      "start": "2029-06",
+      "end": null,
+      "amount": 10,
+      "source_id": "L1",
+      "limitation": "원모델 재현용 무기한 구간. 실제 장기계획에서는 자녀 연령·지원 종료를 확인해야 함."
+    }
+  ],
+  "life_stage_schedule": [],
+  "repayment_constraint": {
+    "max_monthly_payment": null,
+    "max_payment_ratio": null,
+    "included_debts": [
+      "mortgage"
+    ],
+    "income_components": [
+      "husband",
+      "wife"
+    ],
+    "effective_from": null,
+    "effective_to": null,
+    "agreement_ref": null
+  },
+  "confirmations": {
+    "policy": {"status": "UNKNOWN", "evidence_ref": null},
+    "lease": {"status": "UNKNOWN", "evidence_ref": null},
+    "parent_transfer": {"status": "UNKNOWN", "evidence_ref": null},
+    "property": {"status": "UNKNOWN", "evidence_ref": null}
+  },
+  "execution_evidence": {
+    "parent_support_confirmed": false,
+    "rental_return_confirmed": false,
+    "lease_extension_confirmed": false,
+    "housing_conditions_confirmed": false,
+    "dates_confirmed": false,
+    "long_term_budget_confirmed": false,
+    "customer_choice_confirmed": false
+  },
+  "retirement_analysis": {
+    "status": "NOT_EVALUATED",
+    "reason": "월 100 유지만 계산. 실제 연금 예상액·개시일·은퇴생활비·종료연령 미확인."
+  },
+  "sources": [
+    {
+      "source_id": "L1",
+      "title": "1107 원본설정표",
+      "path_or_url": "../../hw/1107-규리_원본설정표.md",
+      "locator": "1~9절",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    },
+    {
+      "source_id": "L2",
+      "title": "4단계 피드백 반영 수정본문",
+      "path_or_url": "../../hw/4단계_피드백반영_수정본문.md",
+      "locator": "4.1~4.4",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    },
+    {
+      "source_id": "L3",
+      "title": "4단계 보완검증 계산부록",
+      "path_or_url": "../../hw/4단계_보완검증_계산부록.md",
+      "locator": "보완 가정·대출 역산·5년 반례",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    },
+    {
+      "source_id": "G5",
+      "title": "Google Docs 1107 입력",
+      "path_or_url": "https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.gipt65gh5bum",
+      "locator": "고객·소득·생활비·출산·일정",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    },
+    {
+      "source_id": "G7",
+      "title": "Google Docs 피드백 반영",
+      "path_or_url": "https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.iznjxipa278x",
+      "locator": "현재 판단과 한계",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    },
+    {
+      "source_id": "W1",
+      "title": "주택 취득세 일반세율",
+      "path_or_url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=2&cciNo=2&cnpClsNo=4&csmSeq=666",
+      "locator": "매매 취득세 일반세율",
+      "checked_at": "2026-11-13",
+      "effective_date": "2026-11-07"
+    }
+  ],
+  "provenance": {
+    "initial": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "income": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "dates": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "budget": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "birth_expenses": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "vouchers": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "support_schedule": {
+      "source_id": "L1",
+      "value_kind": "fictional_case_setting",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "effective_from": "2026-11-07",
+      "actual_evidence": false
+    },
+    "assumptions": {
+      "source_id": "L3",
+      "value_kind": "model_assumption",
+      "verification_status": "source_matched",
+      "checked_at": "2026-11-13",
+      "actual_evidence": false
+    }
+  },
+  "limitations": [
+    "실제 고객 증빙이 아닌 가상 사례 설정입니다.",
+    "2026-11-07 제도·예산 스냅샷의 재현이며 미래 적용을 보장하지 않습니다.",
+    "장기 지원·급여·양육 구성은 별도 일정이 없으면 기존 고정구조 민감도입니다.",
+    "준비현금 1500은 추가 자산·지출이 아닌 용도 배정입니다."
+  ]
+}

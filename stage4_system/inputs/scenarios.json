@@ -1,0 +1,337 @@
+{
+  "schema_version": "1.0",
+  "scenarios": [
+    {
+      "id": "base_2027",
+      "name": "2027년 7.5억 · 원기간",
+      "purchase_year": 2027,
+      "price": 75000,
+      "loan": 42189,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2027-03-15",
+      "close_date": "2027-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "base_2030",
+      "name": "2030년 7.5억 · 원기간",
+      "purchase_year": 2030,
+      "price": 75000,
+      "loan": 33895,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2030-03-15",
+      "close_date": "2030-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "base_2031",
+      "name": "2031년 7.5억 · 원기간",
+      "purchase_year": 2031,
+      "price": 75000,
+      "loan": 31869,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2027",
+      "name": "2027년 7.5억 · 매입 후 5년",
+      "purchase_year": 2027,
+      "price": 75000,
+      "loan": 42189,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2027-03-15",
+      "close_date": "2027-06-15",
+      "analysis_end": "2032-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2030",
+      "name": "2030년 7.5억 · 매입 후 5년",
+      "purchase_year": 2030,
+      "price": 75000,
+      "loan": 33895,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2030-03-15",
+      "close_date": "2030-06-15",
+      "analysis_end": "2035-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2031",
+      "name": "2031년 7.5억 · 매입 후 5년",
+      "purchase_year": 2031,
+      "price": 75000,
+      "loan": 31869,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "candidate_63000",
+      "name": "2031년 6.3억 · 추가 검토",
+      "purchase_year": 2031,
+      "price": 63000,
+      "loan": 21700,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "candidate_63000_nontrade",
+      "name": "2031년 6.3억 · 비거래 복합",
+      "purchase_year": 2031,
+      "price": 63000,
+      "loan": 21700,
+      "rate": 0.07,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "candidate_60000",
+      "name": "2031년 6억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 60000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "candidate_58000",
+      "name": "2031년 5.8억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 58000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "candidate_56000",
+      "name": "2031년 5.6억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 56000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "rent_only",
+      "name": "전세 유지 · 공통 비교",
+      "purchase_year": null,
+      "price": 0,
+      "loan": 0,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": null,
+      "close_date": null,
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    }
+  ],
+  "stress_templates": [
+    {
+      "id": "leave_delay",
+      "name": "복직 6개월 지연",
+      "overrides": {
+        "delay_months": 6
+      }
+    },
+    {
+      "id": "care_up",
+      "name": "돌봄비20% 상승",
+      "overrides": {
+        "care_multiplier": 1.2
+      }
+    },
+    {
+      "id": "rate_up",
+      "name": "신규대출7%",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {}
+    },
+    {
+      "id": "parent_delay",
+      "name": "부모지원 잔금3개월뒤",
+      "parent_support_after_close_months": 3,
+      "overrides": {}
+    },
+    {
+      "id": "deposit_delay_1",
+      "name": "보증금1개월 지연(30일 근사)",
+      "overrides": {
+        "deposit_delay_months": 1
+      }
+    },
+    {
+      "id": "deposit_delay_3",
+      "name": "보증금3개월 지연(90일 근사)",
+      "overrides": {
+        "deposit_delay_months": 3
+      }
+    },
+    {
+      "id": "renewal",
+      "name": "갱신 보증금1500 증액",
+      "overrides": {
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "stock_down",
+      "name": "매각대금20% 하락",
+      "overrides": {
+        "stock_loss": 0.2
+      }
+    },
+    {
+      "id": "leave_rate",
+      "name": "복직 지연+신규7%",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {
+        "delay_months": 6
+      }
+    },
+    {
+      "id": "nontrade_combined",
+      "name": "비거래 복합",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "all_combined",
+      "name": "전체 복합",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "parent_support_after_close_months": 3,
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500,
+        "deposit_delay_months": 3
+      }
+    }
+  ]
+}

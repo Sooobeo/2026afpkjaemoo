@@ -1,0 +1,813 @@
+{
+  "case": {
+    "case_id": "kim-lee-fictional-2026",
+    "schema_version": "1.0",
+    "as_of_date": "2026-11-30",
+    "start_month": "2026-12",
+    "price_base_month": "2026-11",
+    "currency": "KRW",
+    "amount_unit": "만원",
+    "customer": {
+      "husband": {
+        "name": "김도윤",
+        "age": 34,
+        "occupation": "대기업 IT 개발자"
+      },
+      "wife": {
+        "name": "이서연",
+        "age": 32,
+        "occupation": "지방직 공무원"
+      },
+      "fictional": true,
+      "priority": [
+        "회복·진료·필수 돌봄과 비상현금",
+        "은퇴저축 유지",
+        "실행 가능한 주택 조건"
+      ]
+    },
+    "initial": {
+      "cash": 8000,
+      "stock": 2500,
+      "pension": 1500,
+      "rental_deposit": 30000,
+      "rental_debt": 10000
+    },
+    "income": {
+      "husband": 570,
+      "wife": 280,
+      "leave_tiers": [
+        250,
+        200,
+        160
+      ],
+      "leave_contribution": 31.5,
+      "settlement_retention": 5
+    },
+    "dates": {
+      "birth_month": "2028-04",
+      "maternity_start": "2028-04",
+      "maternity_end": "2028-06",
+      "leave_start": "2028-07",
+      "leave_end": "2029-06",
+      "nursery_start": "2029-06",
+      "return_month": "2029-07"
+    },
+    "budget": {
+      "adult_before": 480,
+      "adult_after": 405,
+      "child": 80,
+      "prenatal_insurance": 8,
+      "prenatal_start": "2027-12",
+      "care_early": 20,
+      "care_late": 60,
+      "nursery": 10,
+      "rent_interest": 30,
+      "owned_maintenance": 10,
+      "retirement": 100,
+      "emergency_initial": 3100,
+      "emergency_later": 3400,
+      "birth_buffer": 120,
+      "trade_buffer": 200
+    },
+    "assumptions": {
+      "inflation": 0.02,
+      "parent_support": 10000,
+      "retirement_return": 0,
+      "stock_return": 0,
+      "house_price_growth": 0
+    },
+    "birth_expenses": [
+      {
+        "month": "2027-04",
+        "amount": 16.666666666666668,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-05",
+        "amount": 16.666666666666668,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-06",
+        "amount": 16.666666666666668,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-08",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-09",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-10",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-11",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-12",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-01",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-02",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-03",
+        "amount": 18.75,
+        "source_id": "L1"
+      },
+      {
+        "month": "2027-12",
+        "amount": 50,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-02",
+        "amount": 125,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-03",
+        "amount": 200,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-04",
+        "amount": 550,
+        "source_id": "L1"
+      },
+      {
+        "month": "2028-05",
+        "amount": 255,
+        "source_id": "L1"
+      }
+    ],
+    "vouchers": [
+      {
+        "id": "prenatal_voucher",
+        "amount": 100,
+        "eligible_base_amount": 18.75,
+        "eligible_months": [
+          "2027-08",
+          "2027-09",
+          "2027-10",
+          "2027-11",
+          "2027-12",
+          "2028-01",
+          "2028-02",
+          "2028-03"
+        ],
+        "source_id": "L1"
+      },
+      {
+        "id": "first_meeting_voucher",
+        "amount": 200,
+        "eligible_months": [
+          "2028-04"
+        ],
+        "source_id": "L1"
+      }
+    ],
+    "support_schedule": [
+      {
+        "start": "2028-04",
+        "end": "2029-03",
+        "amount": 110,
+        "source_id": "L1"
+      },
+      {
+        "start": "2029-04",
+        "end": "2029-05",
+        "amount": 60,
+        "source_id": "L1"
+      },
+      {
+        "start": "2029-06",
+        "end": null,
+        "amount": 10,
+        "source_id": "L1",
+        "limitation": "원모델 재현용 무기한 구간. 실제 장기계획에서는 자녀 연령·지원 종료를 확인해야 함."
+      }
+    ],
+    "life_stage_schedule": [],
+    "repayment_constraint": {
+      "max_monthly_payment": null,
+      "max_payment_ratio": null,
+      "included_debts": [
+        "mortgage"
+      ],
+      "income_components": [
+        "husband",
+        "wife"
+      ],
+      "effective_from": null,
+      "effective_to": null,
+      "agreement_ref": null
+    },
+    "confirmations": {
+      "policy": {
+        "status": "UNKNOWN",
+        "evidence_ref": null
+      },
+      "lease": {
+        "status": "UNKNOWN",
+        "evidence_ref": null
+      },
+      "parent_transfer": {
+        "status": "UNKNOWN",
+        "evidence_ref": null
+      },
+      "property": {
+        "status": "UNKNOWN",
+        "evidence_ref": null
+      }
+    },
+    "execution_evidence": {
+      "parent_support_confirmed": false,
+      "rental_return_confirmed": false,
+      "lease_extension_confirmed": false,
+      "housing_conditions_confirmed": false,
+      "dates_confirmed": false,
+      "long_term_budget_confirmed": false,
+      "customer_choice_confirmed": false
+    },
+    "retirement_analysis": {
+      "status": "NOT_EVALUATED",
+      "reason": "월 100 유지만 계산. 실제 연금 예상액·개시일·은퇴생활비·종료연령 미확인."
+    },
+    "sources": [
+      {
+        "source_id": "L1",
+        "title": "1107 원본설정표",
+        "path_or_url": "../../hw/1107-규리_원본설정표.md",
+        "locator": "1~9절",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      },
+      {
+        "source_id": "L2",
+        "title": "4단계 피드백 반영 수정본문",
+        "path_or_url": "../../hw/4단계_피드백반영_수정본문.md",
+        "locator": "4.1~4.4",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      },
+      {
+        "source_id": "L3",
+        "title": "4단계 보완검증 계산부록",
+        "path_or_url": "../../hw/4단계_보완검증_계산부록.md",
+        "locator": "보완 가정·대출 역산·5년 반례",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      },
+      {
+        "source_id": "G5",
+        "title": "Google Docs 1107 입력",
+        "path_or_url": "https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.gipt65gh5bum",
+        "locator": "고객·소득·생활비·출산·일정",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      },
+      {
+        "source_id": "G7",
+        "title": "Google Docs 피드백 반영",
+        "path_or_url": "https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.iznjxipa278x",
+        "locator": "현재 판단과 한계",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      },
+      {
+        "source_id": "W1",
+        "title": "주택 취득세 일반세율",
+        "path_or_url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=2&cciNo=2&cnpClsNo=4&csmSeq=666",
+        "locator": "매매 취득세 일반세율",
+        "checked_at": "2026-11-13",
+        "effective_date": "2026-11-07"
+      }
+    ],
+    "provenance": {
+      "initial": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "income": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "dates": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "budget": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "birth_expenses": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "vouchers": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "support_schedule": {
+        "source_id": "L1",
+        "value_kind": "fictional_case_setting",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "effective_from": "2026-11-07",
+        "actual_evidence": false
+      },
+      "assumptions": {
+        "source_id": "L3",
+        "value_kind": "model_assumption",
+        "verification_status": "source_matched",
+        "checked_at": "2026-11-13",
+        "actual_evidence": false
+      }
+    },
+    "limitations": [
+      "실제 고객 증빙이 아닌 가상 사례 설정입니다.",
+      "2026-11-07 제도·예산 스냅샷의 재현이며 미래 적용을 보장하지 않습니다.",
+      "장기 지원·급여·양육 구성은 별도 일정이 없으면 기존 고정구조 민감도입니다.",
+      "준비현금 1500은 추가 자산·지출이 아닌 용도 배정입니다."
+    ]
+  },
+  "policy": {
+    "schema_version": "1.0",
+    "policy_version": "case-snapshot-2026-11-07-v1",
+    "as_of_date": "2026-11-07",
+    "verified_for_execution": false,
+    "acquisition": {
+      "ordinary_tax": true,
+      "area_le85": true,
+      "no_surcharge": true,
+      "no_relief": true,
+      "education_ratio": 0.1,
+      "brokerage_vat_rate": 0.1,
+      "other_budget": 900,
+      "brokerage_bands": [
+        {
+          "min": 20000,
+          "max": 90000,
+          "rate": 0.004
+        }
+      ],
+      "tax_rounding": "unrounded_decimal_replay",
+      "source_ids": [
+        "W1",
+        "L3"
+      ],
+      "scope_note": "기본 중개보수 구간은 2억 이상 9억 미만만 지원. 범위 밖은 확인된 견적 또는 별도 검증 구간 필요."
+    },
+    "approval_status": "UNKNOWN",
+    "rules": {
+      "emergency_months": 6,
+      "retirement_monthly_target": 100,
+      "required_post_purchase_years": 5
+    },
+    "limitations": [
+      "일반세율·중과 없음·전용85㎡이하·감면 전 가정",
+      "출산가구 취득세 감면 기본 제외",
+      "증여세 0은 각자 최근10년 공제 미사용의 원설정 전제이며 실제 이력 미확인",
+      "지원·휴직·대출 규정의 실제 적용일과 요건은 실행 전 별도 확인"
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "base_2027",
+      "name": "2027년 7.5억 · 원기간",
+      "purchase_year": 2027,
+      "price": 75000,
+      "loan": 42189,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2027-03-15",
+      "close_date": "2027-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "base_2030",
+      "name": "2030년 7.5억 · 원기간",
+      "purchase_year": 2030,
+      "price": 75000,
+      "loan": 33895,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2030-03-15",
+      "close_date": "2030-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "base_2031",
+      "name": "2031년 7.5억 · 원기간",
+      "purchase_year": 2031,
+      "price": 75000,
+      "loan": 31869,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2027",
+      "name": "2027년 7.5억 · 매입 후 5년",
+      "purchase_year": 2027,
+      "price": 75000,
+      "loan": 42189,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2027-03-15",
+      "close_date": "2027-06-15",
+      "analysis_end": "2032-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2030",
+      "name": "2030년 7.5억 · 매입 후 5년",
+      "purchase_year": 2030,
+      "price": 75000,
+      "loan": 33895,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2030-03-15",
+      "close_date": "2030-06-15",
+      "analysis_end": "2035-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "post_2031",
+      "name": "2031년 7.5억 · 매입 후 5년",
+      "purchase_year": 2031,
+      "price": 75000,
+      "loan": 31869,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "candidate_63000",
+      "name": "2031년 6.3억 · 추가 검토",
+      "purchase_year": 2031,
+      "price": 63000,
+      "loan": 21700,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    },
+    {
+      "id": "candidate_63000_nontrade",
+      "name": "2031년 6.3억 · 비거래 복합",
+      "purchase_year": 2031,
+      "price": 63000,
+      "loan": 21700,
+      "rate": 0.07,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "candidate_60000",
+      "name": "2031년 6억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 60000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "candidate_58000",
+      "name": "2031년 5.8억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 58000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "candidate_56000",
+      "name": "2031년 5.6억 · 신규 계산 후보",
+      "purchase_year": 2031,
+      "price": 56000,
+      "loan": 19000,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": "2031-03-15",
+      "close_date": "2031-06-15",
+      "analysis_end": "2036-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "G7",
+      "overrides": {},
+      "evidence_note": "이 실행에서 재계산할 후보입니다. Google Docs 6단계 사고 시연값의 재현을 주장하지 않습니다."
+    },
+    {
+      "id": "rent_only",
+      "name": "전세 유지 · 공통 비교",
+      "purchase_year": null,
+      "price": 0,
+      "loan": 0,
+      "rate": 0.05,
+      "term_months": 360,
+      "mode": "historical_replay",
+      "contract_date": null,
+      "close_date": null,
+      "analysis_end": "2031-06",
+      "comparison_end": "2031-06",
+      "approved_limit": null,
+      "approval_status": "UNKNOWN",
+      "decision_status": "REVIEW_REQUIRED",
+      "source_id": "L3",
+      "overrides": {}
+    }
+  ],
+  "stress_templates": [
+    {
+      "id": "leave_delay",
+      "name": "복직 6개월 지연",
+      "overrides": {
+        "delay_months": 6
+      }
+    },
+    {
+      "id": "care_up",
+      "name": "돌봄비20% 상승",
+      "overrides": {
+        "care_multiplier": 1.2
+      }
+    },
+    {
+      "id": "rate_up",
+      "name": "신규대출7%",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {}
+    },
+    {
+      "id": "parent_delay",
+      "name": "부모지원 잔금3개월뒤",
+      "parent_support_after_close_months": 3,
+      "overrides": {}
+    },
+    {
+      "id": "deposit_delay_1",
+      "name": "보증금1개월 지연(30일 근사)",
+      "overrides": {
+        "deposit_delay_months": 1
+      }
+    },
+    {
+      "id": "deposit_delay_3",
+      "name": "보증금3개월 지연(90일 근사)",
+      "overrides": {
+        "deposit_delay_months": 3
+      }
+    },
+    {
+      "id": "renewal",
+      "name": "갱신 보증금1500 증액",
+      "overrides": {
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "stock_down",
+      "name": "매각대금20% 하락",
+      "overrides": {
+        "stock_loss": 0.2
+      }
+    },
+    {
+      "id": "leave_rate",
+      "name": "복직 지연+신규7%",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {
+        "delay_months": 6
+      }
+    },
+    {
+      "id": "nontrade_combined",
+      "name": "비거래 복합",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500
+      }
+    },
+    {
+      "id": "all_combined",
+      "name": "전체 복합",
+      "scenario_overrides": {
+        "rate": 0.07
+      },
+      "parent_support_after_close_months": 3,
+      "overrides": {
+        "delay_months": 6,
+        "care_multiplier": 1.2,
+        "stock_loss": 0.2,
+        "renew_extra": 1500,
+        "deposit_delay_months": 3
+      }
+    }
+  ],
+  "events": [],
+  "ai_usage": {
+    "schema_version": "1.0",
+    "tools": [
+      {
+        "tool_name": "Codex",
+        "model": null,
+        "version": null,
+        "plan": null,
+        "used_on": "2026-11-13",
+        "purpose": "4단계 계산 도구의 코드 작성·자료 대조·자동 검사",
+        "note": "확인된 도구명만 기록했습니다. 정확한 모델·버전·요금제는 참가자가 확인해야 합니다."
+      }
+    ],
+    "usage": [
+      {
+        "stage": "4단계 도구 구현",
+        "actual_prompt": "이제 만들어봐 관련 파일 폴더는 새로 만들고",
+        "context": "앞서 작성한 hw/4단계_시스템_구현계획.md에 따른 구현 요청",
+        "response_summary": "독립 폴더에 계산 엔진·입력 검증·대안/스트레스 비교·보고서·기준계획 초안·검사를 생성",
+        "human_judgment": null,
+        "human_review_status": "PENDING",
+        "artifacts": [
+          "afpk/",
+          "inputs/",
+          "tests/",
+          "outputs/latest/report.html"
+        ]
+      }
+    ],
+    "verification": [
+      {
+        "subject": "산전 바우처 적격 비용",
+        "method": "원모델의 모든 월별 숫자 열과 별도 회귀검사 대조",
+        "found_issue": "산전진료와 다른 비용이 같은 달에 있으면 바우처가 부적격 비용에도 적용될 수 있었음",
+        "correction": "월별 적격 산전진료 기본액 18.75를 명시하고 물가환산 한도를 적용",
+        "verification_actor": "자동화 검사·독립 검토 에이전트",
+        "human_verified": false
+      },
+      {
+        "subject": "월말·기초잔액·지급일 구분",
+        "method": "월중 지출과 기초현금 부족의 별도 인수검사",
+        "found_issue": "월말 합계를 개별 거래일로 분류하거나 첫 월급이 기초 보호기준 부족을 가릴 수 있었음",
+        "correction": "opening/monthend/event를 분리하고 기초잔액을 현금·보호자금 검사에 포함",
+        "verification_actor": "자동화 검사·독립 검토 에이전트",
+        "human_verified": false
+      },
+      {
+        "subject": "계약·잔금 출력 누락",
+        "method": "CSV·HTML 내 데이터와 계산 이벤트의 통합검사",
+        "found_issue": "보고서 이벤트 ID와 엔진의 builtin 접두사 불일치로 요약 금액이 비어 있었음",
+        "correction": "동일 사건을 찾아 출력하고 통합검사로 금액 일치를 확인",
+        "verification_actor": "자동화 검사·독립 검토 에이전트",
+        "human_verified": false
+      }
+    ],
+    "summary": {
+      "most_useful_stage": "입력·계산·보고서 분리 구현과 기존 장부 회귀검사",
+      "human_decisions": null,
+      "improvement_evidence": "실행 결과·검사 코드·발견 및 수정 기록을 함께 보존. 참가자의 최종 검토는 별도 필요"
+    },
+    "note": "이번 구현 요청의 실제 프롬프트와 실행한 자동 검사를 기록했습니다. 참가자의 선택·직접 검증, 모델·버전·요금제는 확인되지 않아 채우지 않았습니다. 공모전 제출 전 보완해야 합니다."
+  }
+}
