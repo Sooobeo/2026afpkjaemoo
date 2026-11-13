@@ -1,0 +1,41 @@
+[
+  {
+    "path": "official_housing_41285_20260101_20261113.csv",
+    "bytes": 404596,
+    "city_code": "41285",
+    "city": "고양시 일산동구",
+    "from_date": "2026-01-01",
+    "to_date": "2026-11-13",
+    "encoding": "cp949",
+    "source_url": "https://rt.molit.go.kr/pt/xls/xls.do?mobileAt=",
+    "download_endpoint": "https://rt.molit.go.kr/pt/xls/ptXlsCSVDown.do",
+    "method": "POST public download form",
+    "retrieved_on": "2026-11-13"
+  },
+  {
+    "path": "official_housing_41310_20260101_20261113.csv",
+    "bytes": 558038,
+    "city_code": "41310",
+    "city": "구리시",
+    "from_date": "2026-01-01",
+    "to_date": "2026-11-13",
+    "encoding": "cp949",
+    "source_url": "https://rt.molit.go.kr/pt/xls/xls.do?mobileAt=",
+    "download_endpoint": "https://rt.molit.go.kr/pt/xls/ptXlsCSVDown.do",
+    "method": "POST public download form",
+    "retrieved_on": "2026-11-13"
+  },
+  {
+    "path": "official_housing_41210_20260101_20261113.csv",
+    "bytes": 537986,
+    "city_code": "41210",
+    "city": "광명시",
+    "from_date": "2026-01-01",
+    "to_date": "2026-11-13",
+    "encoding": "cp949",
+    "source_url": "https://rt.molit.go.kr/pt/xls/xls.do?mobileAt=",
+    "download_endpoint": "https://rt.molit.go.kr/pt/xls/ptXlsCSVDown.do",
+    "method": "POST public download form",
+    "retrieved_on": "2026-11-13"
+  }
+]

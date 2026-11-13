@@ -1,0 +1,189 @@
+{
+  "checked_at": "2026-11-13",
+  "scope": "합본2 금액 근거 및 취학 전환 검토",
+  "sources": [
+    {
+      "id": "SCHOOL01",
+      "title": "초·중등교육법 제13조 취학 의무",
+      "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1032860055",
+      "authority": "국가법령정보센터",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "아동이 6세가 되는 해의 다음 해 3월1일 초등학교 입학이 원칙. 2028-04 출생이면 통상2035-03 취학으로 계산한다.",
+      "locator": "제13조제1항·제2항, 시행2026-09-11",
+      "model_treatment": "2035-03을 취학 전환월로 사용하되 조기취학·입학연기 예외 및 실제 취학통지 확인 필요. 법령을2035미래에자동적용확정하지 않음."
+    },
+    {
+      "id": "SCHOOL02",
+      "title": "2026년 온동네 초등돌봄·교육 추진방안 발표",
+      "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=105261&lev=0",
+      "authority": "교육부",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "2026초1·2는 기존 방식(매일2시간) 지원, 초3는 희망자 방과후프로그램 연50만원 이용권 등 학년별 지원이 구분된다.",
+      "locator": "2026-02-03 보도자료, 무상프로그램 비교표·과제3",
+      "model_treatment": "2035본가구의 교육·돌봄비를0 또는 월5만원으로 확정하는 근거가 아니다. 학교별 시간표·프로그램·급간식·교재·외부돌봄·실제지원승인을 확인해야 함."
+    },
+    {
+      "id": "SCHOOL03",
+      "title": "2026 초등돌봄교육(늘봄학교) 운영 길라잡이",
+      "url": "https://www.moe.go.kr/boardCnts/listRenew.do?boardID=72782&m=030215&renew=72782",
+      "authority": "교육부",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "교육부 공식 목록에2026-01-20 운영길라잡이 게시 확인.",
+      "locator": "초등돌봄·교육 주요자료 목록22번",
+      "model_treatment": "현행 운영기준 확인 경로. 이번 검토는 미래2035가구별 청구액을 확정하지 않는다."
+    },
+    {
+      "id": "CARE01",
+      "title": "2026년 아이돌봄서비스 지원 확대",
+      "url": "https://www.mogef.go.kr/nw/rpd/nw_rpd_s001d.do?bbtSn=710800&mid=news405",
+      "authority": "성평등가족부",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "2026아이돌봄서비스 기본 이용요금 시간당12,790원.",
+      "locator": "2026요금 인상 안내",
+      "model_treatment": "월12시간153,480원(15.348만원), 월40시간511,600원(51.16만원)은 단순곱. 예산20/60만원은 추가시간 여유를 둔 팀 선택예산이지 공식지원액이 아님."
+    },
+    {
+      "id": "CARE02",
+      "title": "아이돌봄 서비스 유형 소개",
+      "url": "https://renewal-care.idolbom.go.kr/front/biz/srvcGuide",
+      "authority": "아이돌봄서비스",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "시간제기본형은 생후3개월 이상~만12세 이하, 시간당12,790원. 일반 가사활동 제외, 전액자부담 이용 가능.",
+      "locator": "시간제서비스 기본형",
+      "model_treatment": "청소서비스와 아이돌봄 범위 구분. 2028이후실제요금·인력배정·정부지원 자격확인."
+    },
+    {
+      "id": "LEAVE01",
+      "title": "지방공무원 수당 등에 관한 규정 제11조의2",
+      "url": "https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1026666085",
+      "authority": "국가법령정보센터",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "첫6개월 월봉급액100%,7개월부터80%; 월상한1~3개월250만원,4~6개월200만원,7개월이후160만원. 일반지급1년, 부모각3개월등예외18개월.",
+      "locator": "제11조의2제1항·제6항·제7항, 시행2026-10-01",
+      "model_treatment": "가상월봉급280과세후급여280을구분. 연장6개월수당0은 예외요건미충족가정이며 제도전반의무급선언아님."
+    },
+    {
+      "id": "PENSION01",
+      "title": "휴직자 기여금납부제도",
+      "url": "https://www.geps.or.kr/bizInformation_pensionBiz_absencePay",
+      "authority": "공무원연금공단",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "2020-01-01부터 기준소득월액9%. 휴직중희망시납부하려는달의 일반기여금과같은금액으로매월납부가능, 미납기간소급납부가능.",
+      "locator": "기여금징수율·월별납부 설명",
+      "model_treatment": "350만원×9%=31.5만원은 가상기준소득을 이용한 계산. 실제기준소득월액은 매년5월 변동될 수 있음. 매월납부는사례선택."
+    },
+    {
+      "id": "VOUCHER01",
+      "title": "임신·출산 진료비 지원사업",
+      "url": "https://www.mohw.go.kr/menu.es?mid=a10705020100",
+      "authority": "보건복지부",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "건강보험 임신1회당 일태아100만원 바우처. 발급일부터 사용, 분만예정일/출산일 등으로부터2년 사용.",
+      "locator": "지원금액·사용기간, 최종수정2026-03-31",
+      "model_treatment": "현금입금아님. 적격진료비차감. 실제발급·사용처·지원자격과2028정책 재확인."
+    },
+    {
+      "id": "VOUCHER02",
+      "title": "임신·출산 지원 — 첫만남이용권",
+      "url": "https://www.mohw.go.kr/menu.es?mid=a10711020100",
+      "authority": "보건복지부",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "2024-01-01이후 첫째아200만원·둘째이상300만원 국민행복카드 바우처. 해당출생아 사용기한2년.",
+      "locator": "첫만남이용권 지원",
+      "model_treatment": "조리원잔금전발급과적격사용은사례일정가정. 출생전용품에소급차감하거나 예금유입처리하지않음."
+    },
+    {
+      "id": "TAX01",
+      "title": "주택 매매 취득세 일반세율",
+      "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=2&cciNo=2&cnpClsNo=4&csmSeq=666",
+      "authority": "찾기쉬운 생활법령정보",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "일반 주택취득6억원이하1%,6억원초과9억원이하가격연동산식.",
+      "locator": "취득세 표준세율",
+      "model_treatment": "5.6억원×1%=560만원. 일반세율·중과없음·감면전가정. 주택수·면적·실제취득일·농특세·감면 별도확인."
+    },
+    {
+      "id": "TAX02",
+      "title": "경기부동산포털 세금·수수료",
+      "url": "https://gris.gg.go.kr/ost/oneStopView.do?code=10",
+      "authority": "경기도",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "6억원이하 일반 주택의 지방교육세0.1%,85㎡이하 농특세비과세 안내.",
+      "locator": "세금/수수료 지방교육세 표",
+      "model_treatment": "5.6억원×0.1%=56만원은 해당일반가정. 실제적용요건확인."
+    },
+    {
+      "id": "BROKER01",
+      "title": "부동산 중개보수",
+      "url": "https://www.gg.go.kr/bbs/boardView.do?bIdx=83794&bcIdx=0&bsIdx=656&menuId=2082&page=1",
+      "authority": "경기도청",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "주택매매2억원이상9억원미만상한요율0.4%,실제보수는그범위에서협의. 일반과세자중개업자의VAT별도부담 설명.",
+      "locator": "주택중개보수요율·부가세 법령질의 설명, 게시2026-02-05",
+      "model_treatment": "56,000×0.004=224만원. 일반과세자VAT10%가정22.4를합하면246.4만원. 확정계약보수가아닌상한·과세조건가정."
+    },
+    {
+      "id": "VAT01",
+      "title": "부가가치세법 제30조 세율",
+      "url": "https://www.law.go.kr/법령/부가가치세법/제30조",
+      "authority": "국가법령정보센터",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "claim": "부가가치세율10%가법령검색본문에서확인됨.",
+      "locator": "제30조",
+      "model_treatment": "중개업자일반과세·VAT별도조건하에서계산. 이링크는동적법령뷰어이며텍스트검색본문으로대조."
+    },
+    {
+      "id": "BUDGET01",
+      "title": "드림맘 출퇴근형 이용요금",
+      "url": "https://dreammomcare.co.kr/guide-price.php",
+      "authority": "업체 직접공개요금(공식제도아님)",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "verified_by": "root agent",
+      "claim": "BEST출퇴근4주20일공개요금324만원·예약금74만원을root가직접확인.",
+      "model_treatment": "합본2의330·75·255는그대로공식표금액이라고쓰지않고가상계약예산으로명시."
+    },
+    {
+      "id": "BUDGET02",
+      "title": "미소 정기청소 공개요금",
+      "url": "https://miso.kr/homeclean",
+      "authority": "업체 직접공개요금(공식제도아님)",
+      "verified": true,
+      "checked_at": "2026-11-13",
+      "verified_by": "root agent",
+      "claim": "root가직접페이지확인. 검색공개요금4시간66,900원은주소·일정등견적조건에따라달라짐.",
+      "model_treatment": "66,900×4.33=289,677원≈29만원. 월30만원은팀의여유예산,확정견적아님."
+    }
+  ],
+  "school_budget_warning": {
+    "entry_month": "2035-03",
+    "derived_from": "2028-04생+초중등교육법13조",
+    "values_5_20_50": "미확인 순증 반복지출 민감도, 실제 학교·학원·돌봄비 견적 아님",
+    "replace_before_totaling": [
+      "어린이집 필요경비10",
+      "유료 공백돌봄60",
+      "아이 기본 양육비80 중 품목별 변화"
+    ],
+    "required_actual_inputs": [
+      "입학예정 학교와학년",
+      "학교 프로그램시간·비용·입소가능 여부",
+      "급간식·교재·재료·교통",
+      "부모퇴근까지추가돌봄시간·요금",
+      "방학예산",
+      "정부지원적용일·대상·승인"
+    ]
+  }
+}

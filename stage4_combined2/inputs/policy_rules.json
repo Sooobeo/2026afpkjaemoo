@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "policy_version": "tab31-no-retention-money-display-2026-11-13-v2",
+  "as_of_date": "2026-11-07",
+  "verified_for_execution": false,
+  "acquisition": {
+    "ordinary_tax": true,
+    "area_le85": true,
+    "no_surcharge": true,
+    "no_relief": true,
+    "education_ratio": 0.1,
+    "brokerage_vat_rate": 0.1,
+    "other_budget": 900,
+    "brokerage_bands": [
+      {
+        "min": 20000,
+        "max": 90000,
+        "rate": 0.004
+      }
+    ],
+    "tax_rounding": "unrounded_decimal_replay",
+    "source_ids": [
+      "W1",
+      "L3"
+    ],
+    "scope_note": "기본 중개보수 구간은 2억 이상 9억 미만만 지원. 범위 밖은 확인된 견적 또는 별도 검증 구간 필요."
+  },
+  "approval_status": "UNKNOWN",
+  "rules": {
+    "emergency_months": 6,
+    "retirement_monthly_target": 100,
+    "required_post_purchase_years": 5,
+    "reserve_rule": "nondecreasing_six_month_living_plus_mortgage"
+  },
+  "limitations": [
+    "일반세율·중과 없음·전용85㎡이하·감면 전 가정",
+    "출산가구 취득세 감면 기본 제외",
+    "증여세 0은 각자 최근10년 공제 미사용의 원설정 전제이며 실제 이력 미확인",
+    "지원·휴직·대출 규정의 실제 적용일과 요건은 실행 전 별도 확인"
+  ],
+  "display": {
+    "report_amount_unit": "만원",
+    "amount_rounding": "nearest_integer_half_up",
+    "ratio_decimal_places": 1,
+    "payment_tables_amount_unit": "원",
+    "rounding_applied_to_calculation": false,
+    "rounding_note": "단위 미만 반올림으로 인해 세부 항목의 합과 총계가 일치하지 않을 수 있음"
+  }
+}

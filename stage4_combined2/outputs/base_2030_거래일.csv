@@ -1,0 +1,3 @@
+﻿event_id,date,month,sequence,event,type,record_kind,verification_status,planned_event_id,source_id,cash_before,amount,inflow,cash_after,cash,point_type,reserve,future_birth_cash,birth_buffer,settlement_balance,trade_buffer,earmark,free
+builtin_housing_contract,2030-03-15,2030-03,20,계약금,builtin_contract,planned,source_matched,,,18860.290832950675,7500.0,0.0,11360.290832950677,11360.290832950677,event,3544.9436279556353,0.0,0.0,0.0,0.0,0.0,7815.3472049950415
+builtin_housing_closing,2030-06-15,2030-06,30,잔금과 부대비용 전액,builtin_closing,planned,source_matched,,,21865.038750212767,70380.0,53286.0,4771.038750212767,4771.038750212767,event,4518.174544837673,0.0,0.0,0.0,200.0,200.0,52.86420537509324

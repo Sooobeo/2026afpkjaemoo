@@ -1,0 +1,6 @@
+﻿event_id,date,month,sequence,event,type,record_kind,verification_status,planned_event_id,source_id,cash_before,amount,inflow,cash_after,cash,point_type,reserve,future_birth_cash,birth_buffer,settlement_balance,trade_buffer,earmark,free
+builtin_deposit_renewal,2028-06-01,2028-06,20,전세보증금 증액,builtin_renewal,planned,source_matched,,,12278.910792670902,1500.0,0.0,10778.910792670902,10778.910792670902,event,2996.9529006840494,0.0,0.0,0.0,0.0,0.0,7781.957891986853
+builtin_stock_sale,2031-02-28,2031-02,10,주식 매각,builtin_stock_sale,planned,source_matched,,,14498.57698890579,2000.0,0.0,16498.57698890579,16498.57698890579,event,3684.905121905028,0.0,0.0,0.0,0.0,0.0,12813.671867000761
+builtin_housing_contract,2031-03-15,2031-03,20,계약금,builtin_contract,planned,source_matched,,,16644.42613525495,6300.0,0.0,10344.426135254951,10344.426135254951,event,3690.693757669371,0.0,0.0,0.0,0.0,0.0,6653.73237758558
+builtin_parent_support,2031-05-31,2031-05,20,부모 지원금,income_asset,planned,source_matched,,,10633.228516670672,10000.0,0.0,20633.22851667067,20633.22851667067,event,3702.2997261956143,0.0,0.0,0.0,0.0,0.0,16930.928790475056
+builtin_housing_closing,2031-06-15,2031-06,30,잔금과 부대비용 전액,builtin_closing,planned,source_matched,,,20776.178562304736,58708.8,43200.0,5267.378562304736,5267.378562304736,event,4460.041443766215,0.0,0.0,0.0,200.0,200.0,607.3371185385216

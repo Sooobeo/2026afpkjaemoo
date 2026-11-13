@@ -1,0 +1,26 @@
+{
+  "status": "UNKNOWN",
+  "expected_school_start": "2035-03",
+  "child_birth_month": "2028-04",
+  "entry_rule_note": "일반적인 정상 취학을 전제한 시점. 실제 입학일·유예 등 확인 필요.",
+  "known_pre_school_fee_base2026": 10,
+  "school_fee_nominal": null,
+  "school_meal_increment_nominal": null,
+  "care_hours": null,
+  "care_price_quote": null,
+  "education_materials_nominal": null,
+  "nursery_fee_end": "2035-02",
+  "replacement_rule": "실제 학교·급식·교육·돌봄 견적을 확인하면 어린이집10을 종료하고 항목별 예산으로 대체한다. 기존80·60에서 겹치는 비용도 제거한다.",
+  "sensitivity_only": {
+    "net_extra_monthly": [
+      5,
+      20,
+      50
+    ],
+    "start": "2035-03",
+    "end": "2036-06",
+    "nominal": true,
+    "include_in_emergency_reserve": true
+  },
+  "note": "순증 금액은 실제 학령기 평균·최저비용이 아닌 취약성 시험 가정이다."
+}

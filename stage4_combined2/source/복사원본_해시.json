@@ -1,0 +1,8 @@
+{
+  "stage4_system\\afpk\\__init__.py": "28bb8bd5bba7d0c83619af67fd8f64b988059560e58ab9d26ff6826c0c90217a",
+  "stage4_system\\afpk\\config.py": "cf06e999590cc16714ae62ff9cf894360644bfc9405d9f949f486e3eab53b2eb",
+  "stage4_system\\afpk\\finance.py": "eaa7e1b63495085812a755b0ddbc7365be6613bc24118f99b739a68d0ff8ada4",
+  "stage4_system\\afpk\\engine.py": "e67ad944a09ac2551569cf2be68836f42b8bc2eccd4f6f324234575562385a05",
+  "stage4_system\\afpk\\storage.py": "1aa7baf0bdb416c3a49135d085887ae0ebdfe48bde922342450d2e969a91dafa",
+  "stage4_system\\afpk\\constraints.py": "831803229dca616618c7390835a2a349c965f649f1e15e8771aa1ba3de94a715"
+}

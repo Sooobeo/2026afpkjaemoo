@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "tools": [
+    {
+      "tool_name": "Codex",
+      "model": null,
+      "version": null,
+      "plan": null,
+      "used_on": "2026-11-13",
+      "purpose": "4단계 계산 도구의 코드 작성·자료 대조·자동 검사",
+      "note": "확인된 도구명만 기록했습니다. 정확한 모델·버전·요금제는 참가자가 확인해야 합니다."
+    }
+  ],
+  "usage": [
+    {
+      "stage": "4단계 도구 구현",
+      "actual_prompt": "이제 만들어봐 관련 파일 폴더는 새로 만들고",
+      "context": "앞서 작성한 hw/4단계_시스템_구현계획.md에 따른 구현 요청",
+      "response_summary": "독립 폴더에 계산 엔진·입력 검증·대안/스트레스 비교·보고서·기준계획 초안·검사를 생성",
+      "human_judgment": null,
+      "human_review_status": "PENDING",
+      "artifacts": [
+        "afpk/",
+        "inputs/",
+        "tests/",
+        "outputs/latest/report.html"
+      ]
+    },
+    {
+      "stage": "합본2 재현자료 및 취학 순증 민감도",
+      "actual_prompt": "알아서 이거 보고 해봐",
+      "context": "첨부 Pasted text의 합본2 계산부록·취학비용·근거 보완 요청",
+      "response_summary": "450/300/2700 재현 프로필,29대안 장부,취학 순증 시험 및11개 검사",
+      "human_judgment": null,
+      "human_review_status": "PENDING"
+    },
+    {
+      "stage": "Tab31 선행 조건 반영 4단계 재계산",
+      "actual_prompt": "유보금 5만원 삭제; 보호 여유 전략에서 쓰는 금액과 처리 방식을 풀어서 수정; 금액처리주의점에 따라 4단계 계산설계 파일 재계산",
+      "context": "기존 합본2 450/300/2700 계산 프로필 수정",
+      "response_summary": "고정 정산유보 가정 삭제, 대출 경계 재산정 및29개 시나리오 재생성, 구체적 자금 배분 설명, 만원 보고서와 원 단위 납부표 분리,13개 회귀검사 통과",
+      "human_judgment": null,
+      "human_review_status": "PENDING"
+    }
+  ],
+  "verification": [
+    {
+      "subject": "산전 바우처 적격 비용",
+      "method": "원모델의 모든 월별 숫자 열과 별도 회귀검사 대조",
+      "found_issue": "산전진료와 다른 비용이 같은 달에 있으면 바우처가 부적격 비용에도 적용될 수 있었음",
+      "correction": "월별 적격 산전진료 기본액 18.75를 명시하고 물가환산 한도를 적용",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    },
+    {
+      "subject": "월말·기초잔액·지급일 구분",
+      "method": "월중 지출과 기초현금 부족의 별도 인수검사",
+      "found_issue": "월말 합계를 개별 거래일로 분류하거나 첫 월급이 기초 보호기준 부족을 가릴 수 있었음",
+      "correction": "opening/monthend/event를 분리하고 기초잔액을 현금·보호자금 검사에 포함",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    },
+    {
+      "subject": "계약·잔금 출력 누락",
+      "method": "CSV·HTML 내 데이터와 계산 이벤트의 통합검사",
+      "found_issue": "보고서 이벤트 ID와 엔진의 builtin 접두사 불일치로 요약 금액이 비어 있었음",
+      "correction": "동일 사건을 찾아 출력하고 통합검사로 금액 일치를 확인",
+      "verification_actor": "자동화 검사·독립 검토 에이전트",
+      "human_verified": false
+    },
+    {
+      "subject": "합본2 핵심수치·동적 비상목표·취학 순증",
+      "method": "본문 소수 첫째자리 표 대조·독립 PMT·현금보존·필수 순증의 비상목표 포함 검사",
+      "verification_actor": "자동화 검사·구현 에이전트",
+      "human_verified": false,
+      "result": "11 tests PASS"
+    }
+  ],
+  "summary": {
+    "most_useful_stage": "입력·계산·보고서 분리 구현과 기존 장부 회귀검사",
+    "human_decisions": null,
+    "improvement_evidence": "실행 결과·검사 코드·발견 및 수정 기록을 함께 보존. 참가자의 최종 검토는 별도 필요"
+  },
+  "note": "이번 구현 요청의 실제 프롬프트와 실행한 자동 검사를 기록했습니다. 참가자의 선택·직접 검증, 모델·버전·요금제는 확인되지 않아 채우지 않았습니다. 공모전 제출 전 보완해야 합니다.",
+  "history_note": "이전 구현의 기록을 복사해 보존하고 이번 합본2 재현 요청을 추가했다. 참가자의 직접 검토는 완료되지 않았다."
+}

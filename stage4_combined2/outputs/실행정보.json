@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-11-13T17:24:35.654756+09:00",
+  "case_id": "kim-lee-tab31-no-retention-450-2026",
+  "input_hash": "1a81f81b539a5d491484d63a98c06630e1f455c389fb654ea22dc58248c5e5d5",
+  "result_hash": "ea2f55f64468be0d8da5f0de10b29a0c148086246a614656bb51388f54f08218",
+  "scenarios": 29,
+  "source_snapshot": "source/Tab31_수정기준.md",
+  "original_source_snapshot": "source/합본2_원문스냅샷.txt",
+  "reserve_rule": "max(previous_reserve,6*(living+mortgage+necessary_recurring_extra))",
+  "amount_unit": "만원",
+  "source_check": "PASS",
+  "display_rule": "보고서: 만원 단위 반올림, 비율 소수1자리. 원단위 납부표 별도. JSON/CSV 계산원자료 무반올림.",
+  "fixed_settlement_retention": false
+}

@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFPK 6단계 모니터링 시스템 구현 계획</title><meta name="description" content="AFPK 공모전 6단계 모니터링의 기능·데이터·개발 순서·검증 기준 전체 계획"><style>
+:root{--ink:#19324e;--muted:#677a90;--line:#dbe4ee;--blue:#2159c2;--paper:#fff;--bg:#f4f7fb;--side:266px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.85 'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #8bb8ff;outline-offset:4px;border-radius:3px}
+.skip{position:absolute;left:10px;top:-60px;background:white;padding:10px;z-index:20}.skip:focus{top:10px}
+aside{position:fixed;inset:0 auto 0 0;width:var(--side);padding:30px 22px 22px;background:#142b44;color:white;overflow-y:auto;z-index:5}
+.brand{font-size:11px;letter-spacing:1.4px;color:#a6bfdc;margin:0 0 9px}.aside-title{font-size:20px;line-height:1.4;font-weight:700;letter-spacing:-.6px;margin:0 0 14px}.aside-sub{font-size:12px;line-height:1.7;color:#b3c6dd;margin-bottom:24px}.toc-label{font-size:11px;letter-spacing:1px;color:#9db4ce;margin:0 0 8px}
+nav a{display:block;color:#c7d6e7;font-size:12.3px;line-height:1.55;padding:8px 9px;border-left:2px solid transparent;margin-left:-9px}nav a:hover,nav a.active{color:#fff;text-decoration:none;border-left-color:#83b6ff;background:#203e5f;border-radius:0 5px 5px 0}.aside-bottom{margin-top:25px;font-size:11px;color:#9db4ce}
+.page{margin-left:var(--side);padding:36px 44px 70px}.document{max-width:1050px;margin:0 auto;background:var(--paper);border:1px solid var(--line);box-shadow:0 5px 30px #20384b07;border-radius:14px;padding:42px 52px 50px}
+.tools{display:flex;gap:10px;justify-content:space-between;align-items:center;max-width:1050px;margin:0 auto 18px;color:var(--muted);font-size:12px}.tools div{display:flex;gap:10px;align-items:center}button,.source-link{font:inherit;border:1px solid #c7d5e6;background:#fff;border-radius:6px;padding:7px 12px;color:#315477;cursor:pointer}
+h1{font-size:30px;line-height:1.45;margin:0 0 11px;letter-spacing:-1.1px;color:#122c48}h2{font-size:23px;line-height:1.5;margin:48px 0 18px;padding-top:12px;letter-spacing:-.7px}h2:before{content:'';display:block;width:28px;height:3px;background:#5786d2;margin-bottom:12px;border-radius:2px}h3{font-size:18px;line-height:1.6;margin:30px 0 10px;letter-spacing:-.3px}p{margin:12px 0}strong{font-weight:700;color:#163a68}.doc-date{font-size:12px;color:var(--muted);margin:0 0 28px}
+ul,ol{padding-left:24px;margin:14px 0}li{margin:8px 0}li>p{margin:5px 0}blockquote{border-left:3px solid #bccfe9;padding:0 0 0 20px;margin-left:0;color:#526780}
+.table-wrap{overflow:auto;margin:20px 0 24px;border:1px solid var(--line);border-radius:8px}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.75;min-width:580px;margin:0}th,td{padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;overflow-wrap:anywhere}th{background:#eaf1fb;color:#294c75;font-weight:700}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fafd}tbody tr:hover{background:#eff5ff}th:first-child,td:first-child{min-width:72px}td p{margin:0}.source-table td:first-child{width:60px;min-width:60px}.source-table td:nth-child(2){min-width:180px}
+code{font:12.4px/1.7 Consolas,'Cascadia Code',monospace;background:#eef2f7;border:1px solid #e2e8f0;border-radius:4px;padding:1px 5px;overflow-wrap:anywhere;color:#334d6d}pre{background:#f5f7fa;border:1px solid #dfe6ef;border-radius:8px;padding:18px 20px;overflow:auto;line-height:1.7;margin:20px 0}pre code{background:none;border:0;padding:0;font-size:12.5px;white-space:pre;color:#314b68;overflow-wrap:normal}
+.flow-figure{margin:22px 0 6px;padding:16px;background:#f8faff;border:1px solid var(--line);border-radius:10px}.flow-svg{display:block;width:100%;max-width:840px;height:auto;margin:auto;font-family:'Malgun Gothic',system-ui,sans-serif}.flow-figure figcaption{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}.diagram-source{font-size:12px;color:var(--muted);margin:5px 0 24px}.diagram-source summary{cursor:pointer;padding:4px 0}.diagram-source pre{margin:10px 0}
+.reference{font-size:12px;white-space:nowrap}.doc-footer{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:var(--muted);font-size:11px;overflow-wrap:anywhere}.mobile-toc{display:none}.anchor{position:relative;top:-8px}
+@media(min-width:1600px){.page{padding-left:70px;padding-right:70px}.document{padding-left:62px;padding-right:62px}}
+@media(max-width:1100px){:root{--side:225px}.page{padding:24px}.document{padding:30px}.aside-title{font-size:18px}body{font-size:15px}}
+@media(max-width:800px){aside{display:none}.page{margin-left:0;padding:16px 12px 35px}.document{border-radius:9px;padding:26px 20px;box-shadow:none}h1{font-size:25px}h2{font-size:21px;margin-top:38px}h3{font-size:17px}.tools{gap:10px;align-items:flex-start}.tools>span{max-width:46%;font-size:11px}.tools div{gap:6px}.source-link,button{padding:6px 9px;font-size:11px}.mobile-toc{display:block;border:1px solid var(--line);border-radius:7px;padding:9px 12px;margin:18px 0 26px}.mobile-toc summary{cursor:pointer;font-weight:600}.mobile-toc a{display:block;font-size:13px;padding:5px 0}.table-wrap{margin-left:-2px;margin-right:-2px}td,th{padding:10px;font-size:12px}.flow-figure{padding:4px}.flow-svg{min-width:580px}.flow-figure{overflow:auto}.flow-figure figcaption{min-width:540px}pre{padding:14px}.doc-footer{font-size:10px}}
+@page{size:A4;margin:14mm 14mm 16mm}
+@media print{html{scroll-behavior:auto}body{background:#fff;color:#111;font-size:10.5pt;line-height:1.65}aside,.tools,.mobile-toc,.diagram-source{display:none!important}.page{margin:0;padding:0}.document{border:0;box-shadow:none;max-width:none;padding:0;border-radius:0}h1{font-size:22pt}h2{font-size:16pt;break-after:avoid;margin-top:25pt;padding:0}h2:before{display:none}h3{font-size:12.5pt;break-after:avoid}p{orphans:3;widows:3}a{color:#153d69;text-decoration:none}.table-wrap{overflow:visible;border-radius:0;break-inside:auto;margin:12pt 0}table{min-width:0;font-size:9pt;table-layout:auto}th,td{padding:6pt;overflow-wrap:anywhere}thead{display:table-header-group}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow:visible;font-size:8pt;break-inside:avoid}pre code{white-space:pre-wrap;font-size:8pt}.flow-figure{break-inside:avoid;max-width:140mm;margin-left:auto;margin-right:auto;padding:4mm}.flow-svg{min-width:0}.flow-figure figcaption{min-width:0}.doc-footer{font-size:8pt}}
+</style></head>
+<body><a class="skip" href="#main-content">본문으로 바로가기</a>
+<aside><p class="brand">AFPK CHALLENGE 2026</p><p class="aside-title">6단계 모니터링<br>시스템 구현 계획</p><p class="aside-sub">실제 변화에서 다음 계획까지<br>개발 범위와 검증 기준</p><p class="toc-label">CONTENTS</p><nav aria-label="문서 목차"><a href="#1-구현-목표">1 구현 목표</a><a href="#2-구현-전에-정리할-기준계획">2 구현 전에 정리할 기준계획</a><a href="#3-필수-기능과-확장-범위">3 필수 기능과 확장 범위</a><a href="#4-사용자가-앱에서-하는-일">4 사용자가 앱에서 하는 일</a><a href="#5-화면-구성">5 화면 구성</a><a href="#6-기술-구조">6 기술 구조</a><a href="#7-기존-코드에서-재사용할-부분과-새로-만들-부분">7 기존 코드에서 재사용할 부분과 새로 만들 부분</a><a href="#8-데이터-모델과-입력-양식">8 데이터 모델과 입력 양식</a><a href="#9-미래-계산을-이어-가는-방법">9 미래 계산을 이어 가는 방법</a><a href="#10-어떤-변화가-어떤-계산을-다시-실행하나">10 어떤 변화가 어떤 계산을 다시 실행하나</a><a href="#11-경보-상태와-계획-변경">11 경보 상태와 계획 변경</a><a href="#12-최소-변경-수정안-탐색">12 최소 변경 수정안 탐색</a><a href="#13-ai-변경-추출과-검증">13 AI 변경 추출과 검증</a><a href="#14-공모전-시연-시나리오">14 공모전 시연 시나리오</a><a href="#15-구현-순서와-완료-판정">15 구현 순서와 완료 판정</a><a href="#16-구현-시-반드시-통과할-검사">16 구현 시 반드시 통과할 검사</a><a href="#17-근거와-전-탭-검토-범위">17 근거와 전 탭 검토 범위</a><a href="#18-계획-검토-기록">18 계획 검토 기록</a></nav><div class="aside-bottom">Markdown 전체 내용 · 오프라인 열람</div></aside>
+<div class="page"><div class="tools"><span>팀 검토와 구현을 위한 상세 계획</span><div><a class="source-link" href="6단계_모니터링_시스템_구현계획.md">원본 MD</a><button type="button" onclick="window.print()">인쇄 · PDF</button></div></div>
+<main id="main-content" class="document"><details class="mobile-toc"><summary>목차 바로가기</summary><a href="#1-구현-목표">1 구현 목표</a><a href="#2-구현-전에-정리할-기준계획">2 구현 전에 정리할 기준계획</a><a href="#3-필수-기능과-확장-범위">3 필수 기능과 확장 범위</a><a href="#4-사용자가-앱에서-하는-일">4 사용자가 앱에서 하는 일</a><a href="#5-화면-구성">5 화면 구성</a><a href="#6-기술-구조">6 기술 구조</a><a href="#7-기존-코드에서-재사용할-부분과-새로-만들-부분">7 기존 코드에서 재사용할 부분과 새로 만들 부분</a><a href="#8-데이터-모델과-입력-양식">8 데이터 모델과 입력 양식</a><a href="#9-미래-계산을-이어-가는-방법">9 미래 계산을 이어 가는 방법</a><a href="#10-어떤-변화가-어떤-계산을-다시-실행하나">10 어떤 변화가 어떤 계산을 다시 실행하나</a><a href="#11-경보-상태와-계획-변경">11 경보 상태와 계획 변경</a><a href="#12-최소-변경-수정안-탐색">12 최소 변경 수정안 탐색</a><a href="#13-ai-변경-추출과-검증">13 AI 변경 추출과 검증</a><a href="#14-공모전-시연-시나리오">14 공모전 시연 시나리오</a><a href="#15-구현-순서와-완료-판정">15 구현 순서와 완료 판정</a><a href="#16-구현-시-반드시-통과할-검사">16 구현 시 반드시 통과할 검사</a><a href="#17-근거와-전-탭-검토-범위">17 근거와 전 탭 검토 범위</a><a href="#18-계획-검토-기록">18 계획 검토 기록</a></details><h1 id="afpk-6단계-모니터링-시스템-구현-계획">AFPK 6단계 모니터링 시스템 구현 계획</h1>
+<p class="doc-date">작성 기준일 2026-11-13 KST</p>
+<h2 id="1-구현-목표">1 구현 목표</h2>
+<p><strong>고객의 실제 상황이 바뀌었을 때 무엇이 달라졌고, 언제 얼마가 부족하며, 기존 계획을 얼마나 바꾸면 되는지 보여주는 시스템을 만든다.</strong> 4단계의 계산 엔진을 재사용하고, 6단계에는 실제값 입력·계획 비교·변경 확인·미래 재계산·경보·수정안 선택·이력 저장을 연결한다.</p>
+<p>공모전의 대상은 2028년 첫 자녀 출산을 준비하는 맞벌이 가상 부부다. 아내의 회복·진료와 필수 돌봄, 비상현금, 은퇴저축을 지키면서 주택 조건을 조정한다. 주택 마련을 완료하기 전에도 출산 준비와 저축을 실행하고 점검을 시작할 수 있다.</p>
+<p>문서 후반에 정리된 6단계의 중심은 <strong>변경 감지 → 영향 추적 → 조기경보 → 최소 변경 재설계 → 다음 점검</strong>이다. 처음부터 모든 재무계획을 다시 작성하거나 동일한 위험시험을 반복하는 화면으로 만들지 않는다. [<a class="reference" href="#source-d12">D12</a>, <a class="reference" href="#source-d22">D22</a>]</p>
+<p>이 문서는 구현 계획이다. 모니터링 앱·DB·AI 연동이 이미 완성됐다는 뜻은 아니다. 기존 <code>stage4_system</code>의 계산 코드와 결과는 보존한다. 팀원용 설명은 Google Docs의 ‘모니터링 시스템 구현’ 탭에 두고, 여기에는 세부 구현 기준을 기록한다.</p>
+<h2 id="2-구현-전에-정리할-기준계획">2 구현 전에 정리할 기준계획</h2>
+<h3 id="2-1-450-기준과-480-기준을-별도-버전으로-관리">2.1 450 기준과 480 기준을 별도 버전으로 관리</h3>
+<p>현재 Google Docs에는 다음 두 기준이 함께 있다. 각 기준의 결과를 한 계획의 전후 변화로 비교하면 실제 사건 때문에 달라진 것처럼 오해하게 된다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align:right">기존 4단계 실행과 1107 설정</th>
+<th style="text-align:right">새 1~5단계 합본</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현재 생활·주거비</td>
+<td style="text-align:right">480만 원</td>
+<td style="text-align:right">450만 원</td>
+</tr>
+<tr>
+<td>현재 출산·주택 준비 여력</td>
+<td style="text-align:right">270만 원</td>
+<td style="text-align:right">300만 원</td>
+</tr>
+<tr>
+<td>초기 비상현금</td>
+<td style="text-align:right">3,100만 원</td>
+<td style="text-align:right">2,700만 원</td>
+</tr>
+<tr>
+<td>기본안 역산 대출 2027 / 2030 / 2031</td>
+<td style="text-align:right">42,189 / 33,895 / 31,869만 원</td>
+<td style="text-align:right">41,499 / 33,353 / 31,366만 원</td>
+</tr>
+<tr>
+<td>2031년 7.5억 안의 최초 매입 후 보호위반</td>
+<td style="text-align:right">2031.8</td>
+<td style="text-align:right">2031.10</td>
+</tr>
+<tr>
+<td>6.3억 비거래 복합의 잔금일 여유</td>
+<td style="text-align:right">약 30.5만 원</td>
+<td style="text-align:right">약 517.3만 원</td>
+</tr>
+<tr>
+<td>같은 복합조건의 최초 보호위반</td>
+<td style="text-align:right">2033.7</td>
+<td style="text-align:right">2035.2</td>
+</tr>
+</tbody>
+</table></div>
+<p>합본은 2~4단계에서 450·300·2,700으로 바꾸었지만 말미 5단계에는 270·3,100이 남아 있다. 2029.6 월수지도 합본은 약 13.3/8.3, 기존 계산은 약 25.9/20.9로 다르다. 생활비 한 항목만 30만 원 줄이면 합본 전체 결과가 재현된다고 가정하지 않는다. [<a class="reference" href="#source-d19">D19</a>, <a class="reference" href="#source-d25">D25</a>, <a class="reference" href="#source-d26">D26</a>]</p>
+<p>구현 첫 작업은 다음과 같다.</p>
+<ol>
+<li>기존 검산용 <code>legacy_480</code> 프로필을 그대로 보존한다.</li>
+<li>합본을 반영할 <code>combined_450_draft</code> 프로필을 별도로 만든다. 지출 구성, 물가 산식, 비상현금 갱신, 휴직·보육 전환, 대출 역산기간까지 항목별로 대조한다.</li>
+<li>합본의 대표값을 장부와 별도 계산으로 재현하고 차이를 기록한다. 불일치는 숫자를 맞추기 위한 임의 보정으로 없애지 않는다.</li>
+<li>‘상충결과’ 탭의 통합 방향에 따라 제출용 작업 기준은 합본의 450·300·2,700으로 정렬한다. 재계산과 팀의 확인을 마친 프로필만 점검 기준으로 등록하며, 프로필·정책·코드 버전이 같은 계획끼리 실제 변화의 영향을 비교한다. [<a class="reference" href="#source-d27">D27</a>]</li>
+</ol>
+<p>450 프로필은 합본과 ‘상충결과’의 제출 기준을 반영하는 작업 대상이고, 480 프로필은 이미 구현한 계산의 회귀검사 기준이다. 기준을 450으로 정렬하는 것과 그 결과를 검산·활성화하는 것은 별개다. 기존 수치 일부만 교체하거나 6억 원 후보를 자동 실행안으로 올리지 않는다. [<a class="reference" href="#source-d25">D25</a>, <a class="reference" href="#source-d27">D27</a>]</p>
+<h3 id="2-2-현재-기준계획-파일은-주택-승인안이-아님">2.2 현재 기준계획 파일은 주택 승인안이 아님</h3>
+<p>현재 <a href="../stage4_system/outputs/latest/baseline_plan.json">기준계획 파일</a>은 <code>rent_only</code> 기반의 준비행동 초안이다. <code>draft=true</code>, 선택한 주택 없음, 고객 결정 없음, <code>housing_execution_allowed=false</code>로 되어 있다.</p>
+<p>가져올 때에는 <strong>초안 가져오기 → 입력 기준 확인 → 계획 범위 선택 → 담당자 확인 → 점검 기준 등록</strong>을 거친다. 비상금·출산준비·은퇴저축을 위한 준비계획은 주택이 미확정이어도 점검할 수 있다. 주택 후보를 비교 대상으로 등록하는 것과 계약 실행을 허용하는 것은 별도 상태로 둔다.</p>
+<p>6억 원·대출 1.9억 원 안도 자동 승인하지 않는다. 가상 시연은 <code>ACTIVE_DEMO</code>, 실제 운용 기준은 <code>ACTIVE</code>로 구분하고 화면에 가상 시연임을 표시한다. 시연상의 선택·확인을 실제 고객 동의나 은행 증빙으로 기록하지 않는다.</p>
+<h2 id="3-필수-기능과-확장-범위">3 필수 기능과 확장 범위</h2>
+<p>아래 기능 ID는 이 구현 계획에서 사용하는 번호다. 원문에 적힌 확정 방향과 초기 아이디어를 구분했다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>기능</th>
+<th>최초 구현의 완료 조건</th>
+<th>주요 근거</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MON01</td>
+<td>기준계획 등록</td>
+<td>프로필·기간·제약·입력·선택 상태가 표시되고 이전 계획을 보존</td>
+<td>D12, D21</td>
+</tr>
+<tr>
+<td>MON02</td>
+<td>실제값 수동 입력</td>
+<td>수입·지출·계좌·대출·실행내역을 금액·기간·출처와 저장</td>
+<td>D12, D22, D23</td>
+</tr>
+<tr>
+<td>MON03</td>
+<td>CSV 가져오기</td>
+<td>미리보기·단위·누락·중복·대사 검사 후 확정</td>
+<td>D22, D23</td>
+</tr>
+<tr>
+<td>MON04</td>
+<td>계획 대비 비교</td>
+<td>동일 기간의 계획과 실제 차이, 미입력과 실제 0 구분</td>
+<td>D12, D22</td>
+</tr>
+<tr>
+<td>MON05</td>
+<td>변경 제안과 확인</td>
+<td>메모 추출값·적용일·근거·불명확 항목을 확인한 뒤 반영</td>
+<td>D11, D12</td>
+</tr>
+<tr>
+<td>MON06</td>
+<td>미래 재계산</td>
+<td>확정 스냅샷부터 미래만 계산하고 과거 실제는 유지</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>MON07</td>
+<td>영향 추적</td>
+<td>어떤 변경이 지원금·지출·주택·대출·보호자금에 영향을 주는지 표시</td>
+<td>D22</td>
+</tr>
+<tr>
+<td>MON08</td>
+<td>관련 스트레스</td>
+<td>실제 변경 반영 전망과 추가 시험을 별도로 저장</td>
+<td>D11, D12</td>
+</tr>
+<tr>
+<td>MON09</td>
+<td>최초 경보</td>
+<td>현금 부족·보호기준·상환한도·저축·자료 누락을 구분</td>
+<td>D11, D12, D23</td>
+</tr>
+<tr>
+<td>MON10</td>
+<td>수정안 자동 비교</td>
+<td>허용된 가격·시점 후보를 규칙으로 계산하고 탈락 이유 제시</td>
+<td>D22, D24</td>
+</tr>
+<tr>
+<td>MON11</td>
+<td>최소 변경 선택</td>
+<td>고객 우선순위를 지키는 후보를 변경 폭과 함께 제시</td>
+<td>D22</td>
+</tr>
+<tr>
+<td>MON12</td>
+<td>계획 갱신</td>
+<td>담당자 검토·고객 선택을 기록하고 새 버전만 이후 점검 기준으로 사용</td>
+<td>D12, D22</td>
+</tr>
+<tr>
+<td>MON13</td>
+<td>경보와 변경 이력</td>
+<td>발생·확인·보류·해결, 근거와 계산 실행을 연결</td>
+<td>D12, D22</td>
+</tr>
+<tr>
+<td>MON14</td>
+<td>데이터 확인일</td>
+<td>마지막 확인일·자료 범위·오래된 값·미확정을 화면에 표시</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>MON15</td>
+<td>AI 활용 증빙</td>
+<td>실제 프롬프트·응답·수정·원문 검증·자동검사·사람 판단을 구분</td>
+<td>D2, D12</td>
+</tr>
+<tr>
+<td>MON16</td>
+<td>시연 재현</td>
+<td>사고 입력부터 경보·대안·선택·재시작까지 저장된 자료로 재현</td>
+<td>D22, D23</td>
+</tr>
+</tbody>
+</table></div>
+<p>첫 버전은 가상 부부 한 가구를 대상으로 하는 로컬 시연 앱이다. 수동 입력·CSV·가상 메모를 중심으로 만든다. 제도 검토는 사용자가 제공한 공식 자료를 AI가 비교하고 사람이 확인하는 방식부터 시작한다.</p>
+<p>무인 주간 자료 수집, 은행·마이데이터 연동, 금융거래 집행, 광범위한 상품 추천, 다중 고객의 외부 서비스 운영은 확장으로 둔다. 원문 초반의 몬테카를로·성공확률·투자 최적화는 검토 후보이며 6단계 필수 기능으로 올리지 않는다. [<a class="reference" href="#source-d2">D2</a>, <a class="reference" href="#source-d5">D5</a>, <a class="reference" href="#source-d11">D11</a>, <a class="reference" href="#source-d12">D12</a>]</p>
+<h2 id="4-사용자가-앱에서-하는-일">4 사용자가 앱에서 하는 일</h2>
+<h3 id="4-1-평소-월말-점검">4.1 평소 월말 점검</h3>
+<ol>
+<li>점검할 기준계획과 마감월을 선택한다.</li>
+<li>그달 수입·지출·저축·계좌잔액·대출잔액을 입력하거나 CSV를 올린다.</li>
+<li>시스템이 누락·중복·장부 차이를 표시한다. 확인 전에는 임시 저장한다.</li>
+<li>마감을 확정하면 계획 대비 차이와 남은 목표의 미래 전망을 계산한다.</li>
+<li>처음 부족해지는 날짜·금액과 확인할 일을 보고 필요한 경우 수정안을 비교한다.</li>
+</ol>
+<h3 id="4-2-상담-중-새로운-일이-생긴-경우">4.2 상담 중 새로운 일이 생긴 경우</h3>
+<p>예를 들어 ‘아버지 사고로 치료비를 보태고 주택 지원금 일부를 받기 어려워졌다’는 메모를 입력한다. AI는 누가 얼마를 부담하는지, 언제부터 언제까지인지, 지원금은 감액인지 지연인지 정리한다. 설계사가 확인한 값만 전망에 적용한다. 이미 낸 돈은 실제 거래, 아직 낼 돈은 예정 지출로 나눈다.</p>
+<h3 id="4-3-매입-전과-매입-후">4.3 매입 전과 매입 후</h3>
+<p>매입 전에는 아직 실행하지 않은 가격·시점·신규 대출 조건을 바꿔 볼 수 있다. 계약 후에는 이미 지급한 계약금과 계약 조건을 잠그고, 실제로 가능한 변경만 검토한다. 취득 후에는 매매가를 낮추어 과거 문제를 없애지 않는다. 남은 대출·지출·저축과 실제 가능한 조건 변경을 점검한다.</p>
+<h2 id="5-화면-구성">5 화면 구성</h2>
+<p>탭은 사용자의 업무 순서에 맞춰 여섯 개로 구성한다. 내부 해시나 DB 식별자는 상세 근거에서 확인하고 기본 화면에는 금융적 의미를 먼저 보여준다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>화면</th>
+<th>먼저 보여줄 내용</th>
+<th>주요 행동</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 이번 점검</td>
+<td>기준계획, 프로필, 마감일, 자료 확인 상태, 가장 가까운 위험</td>
+<td>점검 시작·불완전 자료 확인</td>
+</tr>
+<tr>
+<td>2 실제값 입력</td>
+<td>계획/실제 금액, 업로드 미리보기, 잔액 대사 차이</td>
+<td>임시 저장·마감 확정</td>
+</tr>
+<tr>
+<td>3 달라진 내용</td>
+<td>변경 전후·적용일·원문 위치·확인 상태</td>
+<td>AI 제안 수정·반영 승인</td>
+</tr>
+<tr>
+<td>4 앞으로의 위험</td>
+<td>첫 부족일·부족 종류·부족액·원인, 잔액 그래프와 지급일 표</td>
+<td>관련 시험 실행·경보 확인/보류</td>
+</tr>
+<tr>
+<td>5 바꿔 볼 계획</td>
+<td>기존안·변경 반영안·수정안의 조건과 결과</td>
+<td>가격/시점 시험·후보 비교·선택 기록</td>
+</tr>
+<tr>
+<td>6 계획과 기록</td>
+<td>이전/현재 버전, 실행·변경·경보·선택 이유</td>
+<td>새 기준 활성화·내보내기·시연 초기화</td>
+</tr>
+</tbody>
+</table></div>
+<p>위험 화면 상단은 다음 정도로 단순하게 만든다.</p>
+<pre><code class="language-text">점검 기준  2030년 12월 말 / 가상 시연 / 480 기준
+자료 상태  이번 달 계좌 대사 완료 · 대출 승인 자료 확인 필요
+
+언제?          2031년 6월 15일
+무엇이 부족?   잔금 지급 후 남길 비상·목적자금
+얼마나?        재계산한 부족액
+왜?            예정 지원금 감소 + 치료비 지출
+
+[기존 계획] [변경 반영 전망] [선택한 수정안]
+월별 현금과 남겨야 할 돈의 그래프
+계약·잔금일의 입금 / 지급 / 지급 후 현금 / 보호여유 표
+</code></pre>
+<p>그래프에는 과거 실제와 미래 전망의 경계선을 그린다. 추가 스트레스는 기본 전망과 다른 선 또는 별도 영역으로 표시한다. 월말 합계 자료만 있는 기간에는 ‘월중 지급일 확인 필요’를 유지한다. 현금은 남지만 보호기준에 미달하는 경보와 실제 지급할 현금 자체가 없는 경보를 구분한다.</p>
+<h2 id="6-기술-구조">6 기술 구조</h2>
+<p>원문 제안대로 <strong>Streamlit 화면 + Python 서비스 계층 + SQLite 저장소 + 공통 계산 엔진</strong>으로 시작한다. 별도 프런트엔드 서버를 동시에 만들지 않는다. [<a class="reference" href="#source-d23">D23</a>]</p>
+<figure class="flow-figure"><svg aria-labelledby="flow-title flow-desc" class="flow-svg" role="img" viewbox="0 0 890 950" xmlns="http://www.w3.org/2000/svg"><title id="flow-title">6단계 모니터링의 입력부터 다음 점검까지</title><desc id="flow-desc">기준계획 가져오기 → 실제값 입력과 잔액 대사; 실제값 입력과 잔액 대사 → 확인된 마감 스냅샷; 상담 메모 또는 공식 자료 → AI 변경 제안; AI 변경 제안 → 담당자 원문 확인; 담당자 원문 확인 → 남은 기간 재계산; 확인된 마감 스냅샷 → 남은 기간 재계산; 남은 기간 재계산 → 계획 차이와 최초 경보; 남은 기간 재계산 → 관련 추가 스트레스; 관련 추가 스트레스 → 계획 차이와 최초 경보; 계획 차이와 최초 경보 → 허용 범위 수정안 비교; 허용 범위 수정안 비교 → 담당자 검토와 고객 선택; 담당자 검토와 고객 선택 → 새 기준계획과 변경 이력 저장; 새 기준계획과 변경 이력 저장 → 실제값 입력과 잔액 대사</desc><defs><marker id="flow-arrow" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="4.5"><path d="M0 0 L9 4.5 L0 9 Z" fill="#7b91ae"></path></marker></defs><path class="flow-edge" d="M230 92 V132" data-from="A" data-to="B" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M230 192 V232" data-from="B" data-to="C" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M650 92 V132" data-from="M" data-to="N" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M650 192 V232" data-from="N" data-to="V" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M650 292 V322 H480 V352" data-from="V" data-to="E" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M230 292 V322 H380 V352" data-from="C" data-to="E" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M430 412 V552" data-from="E" data-to="F" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M580 382 H730 V452" data-from="E" data-to="S" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M730 512 V582 H580" data-from="S" data-to="F" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M430 612 V652" data-from="F" data-to="G" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M430 712 V752" data-from="G" data-to="H" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M430 812 V852" data-from="H" data-to="I" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-width="2"></path><path class="flow-edge" d="M280 882 H28 V162 H80" data-from="I" data-to="B" fill="none" marker-end="url(#flow-arrow)" stroke="#7b91ae" stroke-dasharray="6 5" stroke-width="2"></path><g class="flow-node" data-node="A"><rect fill="#ffffff" height="60" rx="10" stroke="#cbd6e4" width="300" x="80" y="32"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="230.0" y="68.0">기준계획 가져오기</text></g><g class="flow-node" data-node="B"><rect fill="#ffffff" height="60" rx="10" stroke="#cbd6e4" width="300" x="80" y="132"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="230.0" y="168.0">실제값 입력과 잔액 대사</text></g><g class="flow-node" data-node="C"><rect fill="#ffffff" height="60" rx="10" stroke="#cbd6e4" width="300" x="80" y="232"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="230.0" y="268.0">확인된 마감 스냅샷</text></g><g class="flow-node" data-node="M"><rect fill="#ffffff" height="60" rx="10" stroke="#cbd6e4" width="300" x="500" y="32"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="650.0" y="68.0">상담 메모 또는 공식 자료</text></g><g class="flow-node" data-node="N"><rect fill="#f4f0ff" height="60" rx="10" stroke="#cbbde9" width="300" x="500" y="132"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="650.0" y="168.0">AI 변경 제안</text></g><g class="flow-node" data-node="V"><rect fill="#f4f0ff" height="60" rx="10" stroke="#cbbde9" width="300" x="500" y="232"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="650.0" y="268.0">담당자 원문 확인</text></g><g class="flow-node" data-node="E"><rect fill="#edf4ff" height="60" rx="10" stroke="#adc6ef" width="300" x="280" y="352"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="430.0" y="388.0">남은 기간 재계산</text></g><g class="flow-node" data-node="F"><rect fill="#edf4ff" height="60" rx="10" stroke="#adc6ef" width="300" x="280" y="552"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="430.0" y="588.0">계획 차이와 최초 경보</text></g><g class="flow-node" data-node="S"><rect fill="#ffffff" height="60" rx="10" stroke="#cbd6e4" width="260" x="600" y="452"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="730.0" y="488.0">관련 추가 스트레스</text></g><g class="flow-node" data-node="G"><rect fill="#edf4ff" height="60" rx="10" stroke="#adc6ef" width="300" x="280" y="652"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="430.0" y="688.0">허용 범위 수정안 비교</text></g><g class="flow-node" data-node="H"><rect fill="#edf4ff" height="60" rx="10" stroke="#adc6ef" width="300" x="280" y="752"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="430.0" y="788.0">담당자 검토와 고객 선택</text></g><g class="flow-node" data-node="I"><rect fill="#edf4ff" height="60" rx="10" stroke="#adc6ef" width="300" x="280" y="852"></rect><text fill="#183353" font-size="17" text-anchor="middle" x="430.0" y="888.0">새 기준계획과 변경 이력 저장</text></g><text fill="#64758b" font-size="13" x="40" y="932">새 계획으로 다음 점검을 이어 간다</text></svg><figcaption>월마감 자료와 확인한 변경을 함께 사용해 미래를 다시 계산합니다.</figcaption></figure><details class="diagram-source"><summary>흐름도 원문 보기</summary><pre><code>flowchart TD
+    A["기준계획 가져오기"] --&gt; B["실제값 입력과 잔액 대사"]
+    B --&gt; C["확인된 마감 스냅샷"]
+    M["상담 메모 또는 공식 자료"] --&gt; N["AI 변경 제안"]
+    N --&gt; V["담당자 원문 확인"]
+    V --&gt; E
+    C --&gt; E["남은 기간 재계산"]
+    E --&gt; F["계획 차이와 최초 경보"]
+    E --&gt; S["관련 추가 스트레스"]
+    S --&gt; F
+    F --&gt; G["허용 범위 수정안 비교"]
+    G --&gt; H["담당자 검토와 고객 선택"]
+    H --&gt; I["새 기준계획과 변경 이력 저장"]
+    I --&gt; B
+</code></pre></details><p>Streamlit의 Session State는 화면에서 편집 중인 값과 선택 상태에만 사용한다. 영구적인 기준계획·실제값·승인·경보는 SQLite에 저장한다. 폼 제출 시 값을 모아 검증하고, 위젯 재실행이 저장·승인을 반복하지 않도록 요청 ID를 둔다. 이 구분은 Streamlit의 세션·재실행 구조와 폼 동작을 반영한 것이다. [<a class="reference" href="#source-t1">T1</a>, <a class="reference" href="#source-t2">T2</a>]</p>
+<p>SQLite는 연결마다 외래키 제약을 활성화한다. 새 계획 활성화·활성 버전 변경·결정 기록은 하나의 트랜잭션에서 처리하고, 예상한 기준 버전이 바뀌었으면 저장을 거절한 뒤 다시 비교한다. 초기 범위는 로컬 사용이며 외부 다중 사용자 서비스의 인증·접근권한이 구현됐다고 주장하지 않는다. [<a class="reference" href="#source-t3">T3</a>, <a class="reference" href="#source-t4">T4</a>]</p>
+<p>새 코드는 <code>stage6_monitoring</code>에 둔다. 공통 계산을 <code>stage4_system.afpk</code>에서 직접 가져오거나 경로를 한 번만 구성하는 어댑터를 사용한다. 계산 파일을 복사해 두 버전으로 따로 고치지 않는다. 공통 엔진을 확장해야 하면 기존 재현 모드를 보존하고 회귀검사를 함께 유지한다.</p>
+<h2 id="7-기존-코드에서-재사용할-부분과-새로-만들-부분">7 기존 코드에서 재사용할 부분과 새로 만들 부분</h2>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>기존 코드</th>
+<th>재사용</th>
+<th>필요한 추가 작업</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../stage4_system/afpk/finance.py">finance.py</a></td>
+<td>원리금·취득비용</td>
+<td>현재 대출 잔액·남은 기간·실제 금리유형 연결</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/config.py">config.py</a></td>
+<td>단위·유한값·날짜·입력 상태 검증</td>
+<td>실제 장부·마감·프로필·경보 규칙 검증</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/engine.py">engine.py</a></td>
+<td>생애주기 수입·지출·보호자금 계산</td>
+<td>현재 스냅샷에서 미래를 재개하는 진입점</td>
+</tr>
+<tr>
+<td>같은 파일의 <code>reconcile_events</code></td>
+<td>보조 계획/실제 부분 실행·중복 방지</td>
+<td>실제 주택 계약·대출 실행 상태의 별도 모델</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/constraints.py">constraints.py</a></td>
+<td>현금·보호자금·저축·상환한도 판정</td>
+<td>점검 실행과 경보 수명주기 연결</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/search.py">search.py</a></td>
+<td>명시 범위의 대출 후보 탐색</td>
+<td>가격·시점·변경 폭을 포함한 수정안 탐색</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/storage.py">storage.py</a></td>
+<td>직렬화·입력/결과 해시</td>
+<td>DB 저장·불변 버전·중복 요청 방지</td>
+</tr>
+<tr>
+<td><a href="../stage4_system/afpk/report.py">report.py</a></td>
+<td>표·지표·내보내기</td>
+<td>실제·계획·전망·스트레스·선택안을 구분한 화면</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>가장 큰 공백은 <code>forecast_from_snapshot</code>이다.</strong> 현재 <code>simulate()</code>는 과거 계약일이 기준일 이전이면 거절하고, 매번 주담대·자가·정산 유보 등을 0에서 시작한다. 이미 집을 산 고객의 현재 잔액을 넣어 미래만 이어 계산하는 기능은 없다. 기존 HTML에 입력창만 붙여서는 해결되지 않는다.</p>
+<p>현재 사건 조정도 보조 거래에 한정된다. 자동 생성 계약·잔금·대출을 보조 CSV의 실제 거래로 바꾸는 기능은 지원하지 않는다. 주택 실행은 별도 실행기록과 계약 상태로 가져와야 한다. <code>outputs/latest</code>는 생성 결과를 덮어쓰는 위치이므로 이력 저장소로 쓰지 않는다.</p>
+<h2 id="8-데이터-모델과-입력-양식">8 데이터 모델과 입력 양식</h2>
+<h3 id="8-1-저장할-자료">8.1 저장할 자료</h3>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>객체 또는 테이블</th>
+<th>핵심 필드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사례와 프로필</td>
+<td><code>case_id</code>, <code>data_kind</code>, <code>profile_id</code>, <code>profile_version</code>, 입력·출처·정책 버전</td>
+</tr>
+<tr>
+<td>계획 버전</td>
+<td><code>plan_id</code>, <code>parent_plan_id</code>, <code>status</code>, 목표·제약·선택 조건·불변 입력·적용일</td>
+</tr>
+<tr>
+<td>가져오기 묶음</td>
+<td><code>batch_id</code>, 파일 해시·원본 행·가져온 기간·검증 결과·확정자</td>
+</tr>
+<tr>
+<td>실제 거래</td>
+<td><code>record_id</code>, 계좌·발생일·금액·유형·출처·원계획 연결·정정 연결</td>
+</tr>
+<tr>
+<td>잔액 스냅샷</td>
+<td>기준일·계좌별 잔액·주식·연금·보증금·대출·자가·현재 비상목표·과거 목표 하한·대사 상태</td>
+</tr>
+<tr>
+<td>월마감</td>
+<td>대상월·자료 범위·계좌 대사·확정 상태·스냅샷 ID</td>
+</tr>
+<tr>
+<td>실행 기록</td>
+<td>계약/대출/자동이체 등의 실제일·조건·집행액·미집행액·증빙</td>
+</tr>
+<tr>
+<td>변경 제안</td>
+<td>이전/새 값·단위·적용기간·근거 위치·추출 주체·검토 상태</td>
+</tr>
+<tr>
+<td>계산 실행</td>
+<td>기준계획·스냅샷·확인된 변경·추가 스트레스·엔진 버전·해시·결과</td>
+</tr>
+<tr>
+<td>경보</td>
+<td>규칙·대상 목표·부족일·부족액·상태·원인·발견/해결 실행·담당자</td>
+</tr>
+<tr>
+<td>점검 규칙</td>
+<td>대상 지표·측정주기·재검토 조건·임계값·확인자료·대응 행동·규칙 버전</td>
+</tr>
+<tr>
+<td>수정 후보</td>
+<td>변경 항목·폭·허용 범위·수치/증빙 상태·비교 결과</td>
+</tr>
+<tr>
+<td>결정과 활성화 기록</td>
+<td>검토자·고객 선택·이유·조건·선택일·기존/새 활성 계획</td>
+</tr>
+<tr>
+<td>AI 사용 기록</td>
+<td>실제 요청·응답·모델 확인정보·근거·수정·검증 주체·채택 여부</td>
+</tr>
+</tbody>
+</table></div>
+<p>금액은 저장·교환 단계에서 원 단위 정수 또는 정해진 Decimal 문자열을 사용하고, 화면은 만 원으로 표시한다. 기존 엔진의 만 원 단위 변환은 어댑터 한 곳에서 한다. 변환·반올림 정책은 버전으로 고정한다.</p>
+<p><code>data_kind</code>는 가상 시연/실제 자료, <code>value_kind</code>는 관측값/가정/제도/예정값, <code>review_status</code>는 미검토/확인/보류/반려로 분리한다. 가상 시연 자료를 확인했다고 실제 증빙 확인값으로 승격하지 않는다.</p>
+<p>기존 엔진이 실제 사건에 요구하는 <code>evidence_verified</code>를 가상 자료에 임의로 붙이지 않는다. <code>data_kind=demo</code>와 <code>review_status=confirmed</code>인 시연 거래는 전용 데모 어댑터로 계산하고 원기록의 가상 구분을 유지한다. 실제 운용 경로에서는 이 확인만으로 실제 거래를 반영하지 않는다.</p>
+<h3 id="8-2-csv는-용도가-다른-세-양식으로-시작">8.2 CSV는 용도가 다른 세 양식으로 시작</h3>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>양식</th>
+<th>필수 열</th>
+<th>계산상 역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>actual_transactions.csv</code></td>
+<td><code>record_id,account_id,date,sequence,type,category,amount_krw,planned_event_id,source_id</code></td>
+<td>실제 입출금. 내부 이체는 양쪽 계좌를 연결</td>
+</tr>
+<tr>
+<td><code>balance_snapshots.csv</code></td>
+<td><code>snapshot_id,account_id,as_of_date,balance_krw,source_id</code></td>
+<td>특정 날짜의 확인 잔액. 입금으로 합산하지 않음</td>
+</tr>
+<tr>
+<td><code>plan_changes.csv</code></td>
+<td><code>change_id,field_path,old_value,new_value,unit,effective_from,effective_to,source_id</code></td>
+<td>수당·복직일·예정 지원금·돌봄비 등의 변화</td>
+</tr>
+</tbody>
+</table></div>
+<p>현금입금이 아닌 바우처 사용은 적격 비용과 연결한다. 은퇴저축은 현금계좌에서 연금계좌로의 이동이다. 부모의 미입금 주택 지원 감액은 미래 수입의 변경이며 이미 보유한 현금의 지출로 차감하지 않는다.</p>
+<p>검증은 날짜·단위·기간·계좌·누락·중복·거래 연결·금액 부호·증빙 상태를 확인한다. 동일 파일 재업로드는 묶음 해시로 멱등 처리한다. 다른 파일에 같은 거래가 섞인 경우 원거래 ID를 우선 사용하고, 날짜·금액이 같다는 이유만으로 별개의 정상 거래를 자동 삭제하지 않는다. 확정한 실제 거래는 덮어쓰기보다 정정 연결로 보존한다.</p>
+<h3 id="8-3-잔액-대사와-마감">8.3 잔액 대사와 마감</h3>
+<pre><code class="language-text">예상 기말잔액 = 확인한 기초잔액 + 기간 내 입금 - 기간 내 지급
+대사 차이     = 명세서 기말잔액 - 예상 기말잔액
+</code></pre>
+<p>대사 차이가 허용 오차를 넘거나 자료 범위가 겹치면 <code>NEEDS_RECONCILIATION</code>으로 둔다. 차이를 임의 수입·지출로 만들어 맞추지 않는다. 첫 버전의 마감 단위는 월말이다. 확정되지 않은 마감은 임시 전망에만 쓸 수 있고 검증된 최신 전망처럼 표시하지 않는다.</p>
+<h2 id="9-미래-계산을-이어-가는-방법">9 미래 계산을 이어 가는 방법</h2>
+<p>신규 진입점은 다음 정도로 나눈다. 이는 구현할 인터페이스이며 현재 존재하는 함수명이 아니다.</p>
+<pre><code class="language-text">import_baseline(bundle) -&gt; draft_plan
+reconcile_month(plan, actuals, statements) -&gt; close_result
+build_snapshot(close_result, execution_records) -&gt; snapshot
+confirm_changes(proposals, reviewer) -&gt; confirmed_changes
+forecast_from_snapshot(plan, snapshot, confirmed_changes, assumptions) -&gt; forecast
+run_relevant_stresses(forecast, changed_fields, templates) -&gt; stress_runs
+find_revisions(plan, snapshot, changes, allowed_changes, search_budget) -&gt; candidates
+activate_revision(expected_active_version, selection, evidence) -&gt; new_plan_version
+</code></pre>
+<p>계산은 기준일의 실제 상태 확정 → 같은 기준일로 원계획 정렬 → 확인된 변경을 미래 미실행 계획에 적용 → 기본 전망 계산 → 별도 추가 스트레스 순서로 진행한다. 확인된 미래 지원금 변화가 현재 계좌잔액 자체를 바꾸지는 않는다.</p>
+<ul>
+<li>스냅샷에는 현금·주식·연금·보증금 순지분 외에 현재 주담대 잔액, 고정/변동 금리, 예정 상환액, 남은 기간, 마지막 납입일, 자가/계약 상태, 미집행 목적자금, 누적 정산 유보, 사용한 바우처를 포함한다. 기준일의 비상현금 목표와 과거 목표 하한도 이관해 재시작으로 목표가 낮아지지 않게 한다. 비상목표 규칙 자체를 변경하려면 별도 검토·선택·버전 기록이 필요하다.</li>
+<li>스냅샷 기준일까지의 실제와 집행 비용은 잠그고 이후만 전망한다. 같은 기간의 잔액과 입출금, 계획 납부와 실제 납부를 두 번 합산하지 않는다. 부분 실행은 남은 계획만 미래에 둔다.</li>
+<li>매입 전·계약 후·취득 후 상태를 명시적으로 처리한다. 매각한 주식·반환된 보증금·실행한 주담대를 처음부터 다시 발생시키지 않는다.</li>
+<li>고정금리 대출은 시장금리가 바뀌었다고 소급 변경하지 않는다. 변동금리는 실제 약정의 재산정일과 확인된 조건을 사용한다.</li>
+<li>첫 버전은 월말 스냅샷에서 다음 달 전망을 시작한다. 월중 상담일 입력을 지원하려면 이미 받은 급여·지급한 비용과 남은 그달 거래를 분리하는 기능을 먼저 추가한다. 그전에는 단순 월말 모드를 월중 실시간 점검이라고 부르지 않는다.</li>
+<li>반복 급여·납입일을 모르면 월말 근사로 계산하고 지급일 정확도를 표시한다. 확인한 중요 거래의 날짜·당일 순서만 별도 검사한다.</li>
+</ul>
+<p>입력 기준일, 사건 발생일, 적용 시작일, 자료 확인일, 계산 실행일은 별도 필드다. 가상 시연의 <code>demo_as_of_date</code>가 2030년이어도 실제 실행일을 바꾸어 기록하지 않는다.</p>
+<h2 id="10-어떤-변화가-어떤-계산을-다시-실행하나">10 어떤 변화가 어떤 계산을 다시 실행하나</h2>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>확인된 변화</th>
+<th>다시 볼 경로</th>
+<th>필요할 때 추가 시험</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>휴직·복직일 또는 수당</td>
+<td>급여·기여금·돌봄·지원·주택자금·저축</td>
+<td>추가 복직 지연, 돌봄 증가</td>
+</tr>
+<tr>
+<td>치료비 부담</td>
+<td>실제/예정 지출·현금·주택 보호여유</td>
+<td>치료비 지원기간 연장</td>
+</tr>
+<tr>
+<td>부모 주택 지원 감소·보류</td>
+<td>미입금 예정 유입·계약/잔금 자금</td>
+<td>남은 지원 지연</td>
+</tr>
+<tr>
+<td>보증금 반환일·갱신액</td>
+<td>순반환액·주거비·지급일 부족</td>
+<td>반환 1/3개월 지연</td>
+</tr>
+<tr>
+<td>신규 대출 조건</td>
+<td>원리금·비상목표·상환부담·미래 월수지</td>
+<td>확인된 후보의 금리 상승</td>
+</tr>
+<tr>
+<td>기존 고정대출의 시장금리</td>
+<td>정보 표시. 원계약 상환표 유지</td>
+<td>고정금리 소급 충격은 금지</td>
+</tr>
+<tr>
+<td>지원제도 변경</td>
+<td>적용일부터 해당 지원·적격성</td>
+<td>시행·자격 미확정은 확인 필요</td>
+</tr>
+</tbody>
+</table></div>
+<p>변경 항목과 연결된 경로를 표시하되, 첫 구현의 수치 계산은 전체 남은 기간을 다시 실행해도 된다. 한 가구 모델에서 섣부른 부분 캐시보다 계산 누락을 막는 것이 우선이다. ‘관련 계산을 선택’하는 것과 원인 추적은 연결표로 구현하고, 계산 속도 최적화는 측정 후 한다.</p>
+<p>계획 차이는 같은 기간·단위·프로필끼리 계산한다. 변경별 단독 영향과 복합 영향이 다르면 상호작용을 별도로 표시한다. 단독 효과를 단순 합산해 최저 보호여유 감소의 원인을 전부 설명했다고 쓰지 않는다.</p>
+<h2 id="11-경보-상태와-계획-변경">11 경보 상태와 계획 변경</h2>
+<h3 id="11-1-경보는-수치와-자료-상태를-함께-보여준다">11.1 경보는 수치와 자료 상태를 함께 보여준다</h3>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>경보</th>
+<th>표시할 값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>현금 지급불능</td>
+<td>첫 지급일, 현금 부족액, 지급·확정 유입 구성</td>
+</tr>
+<tr>
+<td>보호자금 미달</td>
+<td>첫 위반일, 총현금, 비상/목적자금 구성, 부족액</td>
+</tr>
+<tr>
+<td>고객 합의 상환한도 초과</td>
+<td>합의 범위의 부채·정기소득·한도·적용기간</td>
+</tr>
+<tr>
+<td>은퇴저축 미달</td>
+<td>목표와 실제/예정 납입, 감액 기간·복원계획 확인 여부</td>
+</tr>
+<tr>
+<td>반복 월적자</td>
+<td>시작월·지속기간·남은 현금 경로. 보호기준 통과와 분리</td>
+</tr>
+<tr>
+<td>입력 누락·오래된 자료</td>
+<td>누락 항목·마지막 확인일·점검에 미치는 범위</td>
+</tr>
+</tbody>
+</table></div>
+<p>자료가 없다고 0으로 채우지 않는다. 자료 부족은 <code>UNKNOWN</code>, 노후 충분성 등 범위 밖 평가는 <code>NOT_EVALUATED</code>로 남긴다. 알려진 수치 조건을 통과해도 미확인 조건까지 충족한 것은 아니다. 자료 유효기간은 항목별 설정으로 관리하고 시연 날짜를 기준으로 평가한다.</p>
+<p>경보는 <code>OPEN → ACKNOWLEDGED / DEFERRED → RESOLVED</code> 흐름으로 관리한다. 확인·보류는 해결이 아니다. 새 실행이 같은 규칙·목표·전망 구간에서 부족을 해소했을 때에만 해결 근거를 연결한다. 과거 실제로 위반한 사건은 없애지 않고 현재 전망과 구분해 보존한다. 재발하면 이전 경보와 연결한 새 발생 이력을 만든다.</p>
+<p>경보 묶음은 사례·목표·규칙·원인 사건을 기준으로 연결하고, 실행별 발생 내역에 당시 부족일·금액·계획 버전을 저장한다. 같은 입력 재실행으로 경보를 중복 생성하지 않는다. 부족 예상일이 이동하면 기존 묶음의 최신 상태를 갱신하되 과거 관측은 보존한다. 분석 종료월을 앞당겨 이전 위반일을 제외했거나 자료가 사라졌다는 이유로 해결 처리하지 않는다.</p>
+<h3 id="11-2-활성-계획-갱신">11.2 활성 계획 갱신</h3>
+<p>계획 상태는 <code>DRAFT → REVIEWED → ACTIVE → SUPERSEDED</code>로 둔다. 데모는 대응하는 <code>*_DEMO</code> 상태와 자료 구분을 사용한다. 주택 계약 실행 허용, 자료 확인 상태, 계획의 점검용 활성 상태는 서로 다른 필드다.</p>
+<p>수정안 선택 시 기존/새 계획 차이, 참가자의 검토, 고객 선택, 남은 조건, 적용일, 근거 계산을 저장한다. 승인 버튼을 누를 때 본 기준계획·실제값 버전이 달라졌으면 다시 계산해야 한다. 새 버전 저장과 활성 포인터 변경·결정 기록이 모두 성공하거나 모두 취소되도록 처리한다.</p>
+<h2 id="12-최소-변경-수정안-탐색">12 최소 변경 수정안 탐색</h2>
+<p>후보는 Python 규칙으로 생성한다. AI는 빠진 영향과 바꿔 볼 방향을 보조하며 후보의 수치를 만들어 내지 않는다.</p>
+<ol>
+<li>의료·회복·필수 돌봄, 고객이 합의한 치료비 지원, 비상현금, 은퇴저축의 유지 조건을 먼저 고정한다.</li>
+<li>아직 실행하지 않은 주택의 가격·시점부터 변경한다. 시연 후보는 6억·5.8억·5.6억 및 구입 연기다. 실제 최소 주거조건과 임차 연장 가능성은 별도 확인한다.</li>
+<li>모든 후보에서 부대비용·상환액·비상현금·계약/잔금일·매입 후 기간을 재계산한다. 가장 늦은 구입 후보의 취득 후 5년까지 자료를 확보하고, 공통 날짜 비교와 각 안의 매입 후 5년 평가를 함께 표시한다. 대출 고정 비교와 대출 변경 비교를 구분한다.</li>
+<li>수치상 불가능한 안, 증빙 확인이 남은 안, 비교한 범위에서 수치를 충족한 안을 분리한다. 모든 후보에 미확인 대출을 추가해 부족을 지우지 않는다.</li>
+<li>고객이 정한 변경 순서에 따라 변경 항목 수, 매입 연기 폭, 가격 차이 등을 차례로 비교한다. 가격과 시점 중 무엇을 더 지킬지는 허용 조건에 기록한다. 임의의 가중치를 숨긴 ‘최적안’으로 표시하지 않는다.</li>
+<li>검사한 후보 중 가장 작은 변경이라고 설명한다. 격자 밖까지 전역 최적이라고 주장하지 않는다. 예산 소진은 탐색 미완료, 전체 허용 후보 실패는 그 범위에서 해 없음으로 표시한다.</li>
+<li>은퇴저축 감액은 주택 조건 조정 이후 고객이 기간·한도·복원계획을 합의한 별도 안으로만 검토한다.</li>
+</ol>
+<p>이미 실행한 가격·날짜·고정금리 등은 후보 생성 단계에서 잠근다. 현재 범위를 넘어 목표·우선순위 자체를 바꿔야 하면 ‘4단계 재수립 필요’로 넘긴다. 단순 보호여유 양수뿐 아니라 반복 월적자와 데이터 정확도도 후보 옆에 유지한다.</p>
+<h2 id="13-ai-변경-추출과-검증">13 AI 변경 추출과 검증</h2>
+<p>AI 입력은 필요한 메모·자료 발췌, 현재 계획의 관련 값, 허용 변경 범위로 제한한다. 가상 자료를 우선 사용하고 실제 자료를 쓰게 되면 불필요한 식별정보를 입력하지 않는다. 문서의 지시문을 실행 명령으로 취급하지 않고 근거 데이터로만 읽는다.</p>
+<p>AI 응답은 <code>field_path</code>, <code>old_value</code>, <code>proposed_value</code>, <code>unit</code>, <code>effective_from/to</code>, <code>source_quote</code>, <code>source_location</code>, <code>uncertainties</code>의 구조로 받는다. 허용 필드·유형·범위·출처 위치를 프로그램이 검사하고, 사람이 원문을 확인한 뒤 <code>confirmed_change</code>로 바꾼다. DB의 실제값이나 활성 계획을 AI 응답이 직접 수정하지 않는다.</p>
+<p>‘주택 지원 보류’는 새 입금일이 없으면 무기한 보류로 정리한다. ‘휴직 연장’은 수당·복직일·공제·보육 조건이 확인되기 전 유급 또는 무급으로 단정하지 않는다. 사람은 추출값을 수정·반려·보류할 수 있다.</p>
+<p>실제 모델이 연결되지 않았거나 응답이 실패하면 수동 입력으로 같은 흐름을 완료할 수 있어야 한다. 사전 저장 AI 응답으로 테스트할 때는 목업이라고 표시한다. 실제 연동 여부와 사용 도구·모델·프롬프트·응답·수정·검증 시간을 기록한다. 자동 검사와 참가자의 직접 확인을 섞지 않는다. [<a class="reference" href="#source-d2">D2</a>, <a class="reference" href="#source-d6">D6</a>, <a class="reference" href="#source-d11">D11</a>, <a class="reference" href="#source-d12">D12</a>]</p>
+<h2 id="14-공모전-시연-시나리오">14 공모전 시연 시나리오</h2>
+<h3 id="14-1-아버지-사고-사례">14.1 아버지 사고 사례</h3>
+<p>원문 시연은 2030년 12월 남편 아버지의 사고로 시작한다. 치료·재활·간병비 월 400만 원 중 남편 부모가 300만 원, 부부가 100만 원을 6개월 부담한다. 남편 부모의 주택 지원 5,000만 원은 보류되고 아내 부모의 지원은 유지된다. [<a class="reference" href="#source-d22">D22</a>, <a class="reference" href="#source-d23">D23</a>]</p>
+<p>시연 순서는 다음과 같다.</p>
+<ol>
+<li>프로필·입력·대출·분석기간이 고정된 가상 기준계획을 등록한다. 6억 원·대출 1.9억 원 안을 실제 승인안으로 표시하지 않는다.</li>
+<li>가상 월마감 자료를 넣어 잔액을 대사한다. 자료는 시연용으로 만든 값임을 표시한다.</li>
+<li>사고 상담 메모를 넣고 AI가 치료비 부담자·기간·주택 지원 변화를 추출한다.</li>
+<li>담당자가 확인하면 실제로 낸 금액과 남은 치료비 계획, 남편 부모 지원금의 입금 보류를 나누어 반영한다. 지원 약정액 5,000만 원은 보류 상태로 보존하고 입금일 미확정으로 해당 잔금재원에서 제외한다. 영구 취소로 바꾸지 않으며 새 입금일이 확인되면 변경을 등록한다.</li>
+<li>기존 전망과 변경 후 전망을 비교해 첫 경보·부족액·원인을 표시한다.</li>
+<li>추가 위험으로 치료비 지원 3개월 연장, 신규금리 7%, 2031.6부터 돌봄비 20% 상승, 매각대금 20% 하락을 시험한다. 기본 변경과 구분해 저장한다.</li>
+<li>6억·5.8억·5.6억·구입 연기를 비교하고 고객의 선택·조건을 기록한다.</li>
+<li>새 계획으로 재시작해 이전 버전·발생 경보·수정 근거가 보존되는지 보여준다.</li>
+</ol>
+<p>사고가 발생한 첫 상담일에 치료비 600만 원을 이미 쓴 것으로 입력하고 미래 6개월 비용까지 또 차감하지 않는다. 처음 1개월만 지출했다면 실제 100과 예정 500으로 나눈다. 치료비 600과 잔금 때 받을 것으로 보던 지원금 5,000의 미조달을 합한 5,600은 해당 시점 주택재원의 차이다. 현재 계좌에서 5,600이 인출됐거나 지원금이 영구 취소됐다는 뜻이 아니다.</p>
+<h3 id="14-2-원문-숫자는-검산할-시연-목표">14.2 원문 숫자는 검산할 시연 목표</h3>
+<p>다음은 ‘모니터링 시스템’ 탭에 제시된 값이다. 현재 4단계 프로그램이 사고 사례 전체를 재현했다는 뜻은 아니다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>480 계열 원시연의 가격</th>
+<th style="text-align:right">사고 후 잔금일 보호여유</th>
+<th style="text-align:right">원문 추가위험을 넣은 매입 후 최저 여유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6억</td>
+<td style="text-align:right">약 -1,998만 원</td>
+<td style="text-align:right">약 -3,156만 원</td>
+</tr>
+<tr>
+<td>5.8억</td>
+<td style="text-align:right">약 +33만 원</td>
+<td style="text-align:right">약 -1,125만 원</td>
+</tr>
+<tr>
+<td>5.6억</td>
+<td style="text-align:right">약 +2,064만 원</td>
+<td style="text-align:right">약 +906만 원</td>
+</tr>
+</tbody>
+</table></div>
+<p>입력·적용월·비용·금리·보호자금의 상세 장부를 재구성해 이 목표를 검산한다. 특히 2031.6.15 첫 경보와 2036.6까지 5.6억 안의 경로를 확인한다. 450 프로필에서는 별도 계산한 값을 사용하며 원문 숫자에 억지로 맞추지 않는다.</p>
+<p>기존 4단계의 ‘비거래 복합’은 치료비·지원금 감소가 없고 돌봄 상승 시작도 다르다. 그 시험을 사고 사례의 검증으로 재사용하지 않는다. 다른 화면의 906 또는 491 같은 숫자만 떼어 같은 조건이라고 설명하지 않는다.</p>
+<h3 id="14-3-시연에-함께-넣을-반례">14.3 시연에 함께 넣을 반례</h3>
+<ul>
+<li>월말 현금은 충분해도 잔금일 입금 순서 때문에 부족한 사례.</li>
+<li>AI가 ‘남편 부모 300, 부부 100’을 잘못 읽으면 검토 화면에서 수정하는 사례.</li>
+<li>기존 고정금리 대출이 있어도 시장금리만 바뀌었다는 이유로 과거 상환액이 달라지지 않는 사례.</li>
+<li>자료가 누락되면 안전으로 표시하지 않고 확인 필요로 남는 사례.</li>
+<li>실행한 주택의 가격을 낮추는 수정이 거절되고, 아직 미실행인 조건만 바꾸는 사례.</li>
+</ul>
+<h2 id="15-구현-순서와-완료-판정">15 구현 순서와 완료 판정</h2>
+<p>각 단계는 화면 수가 아니라 끝까지 실행되는 업무 흐름으로 완료를 판정한다. 날짜와 담당자 배분은 실제 작업 여건에 맞추어 정한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>순서</th>
+<th>작업 묶음</th>
+<th>완료 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>입력 기준·계획 상태 정리</td>
+<td>450/480 비교표, 프로필별 재현 근거, 선택 주택과 준비계획 구분</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>저장소·가져오기·실제값·월마감</td>
+<td>CSV 중복 방지, 계좌 대사, 확정 스냅샷, 재시작 후 자료 유지</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>스냅샷 미래 계산</td>
+<td>미매입·계약 후·취득 후 세 상태, 현재 부채·목적자금, 과거 잠금</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>차이 비교·관련 시험·경보</td>
+<td>기본/추가시험 분리, 최초 위반·부족 종류·자료 확인 상태 표시</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>수정안·선택·버전 활성화</td>
+<td>허용 후보 비교, 실행 조건 잠금, 동시 변경 충돌과 트랜잭션 처리</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>AI 변경 추출·검토·증빙</td>
+<td>실제 모델 또는 목업 구분, 원문 확인, 실패 시 수동 완료</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>사고 시연·회귀·내보내기</td>
+<td>처음 입력부터 새 계획 재시작까지 재현, 같은 결과의 장부·보고서</td>
+</tr>
+</tbody>
+</table></div>
+<p>화면은 P1부터 얇게 연결하되, 화면을 꾸미기 전에 P2의 상태 재시작을 검증한다. 첫 수직 구현은 ‘준비계획 등록 → 1개월 마감 → 변경 1개 → 경보 1개 → 수정 1개 → 새 버전 재시작’이다. 이후 위험과 시연을 늘린다.</p>
+<p>제안 폴더 구조는 다음과 같다. 이 계획 파일 외의 모듈은 아직 작성하지 않았다.</p>
+<pre><code class="language-text">stage6_monitoring/
+  6단계_모니터링_시스템_구현계획.md
+  app.py
+  monitoring/
+    baseline_import.py
+    profiles.py
+    actuals.py
+    reconciliation.py
+    snapshots.py
+    forecast_adapter.py
+    change_service.py
+    stress_router.py
+    alert_service.py
+    replanning.py
+    plan_versions.py
+    repository.py
+    ai_adapter.py
+    exports.py
+  templates/                 # 실제거래·잔액·변경 CSV
+  fixtures/                  # 시연 전용 자료와 예상 장부
+  migrations/                # SQLite 스키마 버전
+  tests/
+  data/                      # 로컬 DB, 외부 전송 없이 관리
+  outputs/&lt;monitoring_run&gt;/   # 실행별 불변 결과, latest를 이력으로 사용하지 않음
+</code></pre>
+<h2 id="16-구현-시-반드시-통과할-검사">16 구현 시 반드시 통과할 검사</h2>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>검사 묶음</th>
+<th>대표 인수 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기준계획</td>
+<td>초안이 자동 승인되지 않음. 준비계획은 주택 미확정이어도 점검 가능</td>
+</tr>
+<tr>
+<td>프로필</td>
+<td>450/480 혼합 거절, 모델/정책 변경을 실제 소비 변화로 오인하지 않음</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>중복 재업로드 멱등, 정상적인 같은 금액 거래 보존, 단위 오류 차단</td>
+</tr>
+<tr>
+<td>잔액 대사</td>
+<td>명세서 잔액과 기간 거래가 일치, 차이는 미해결로 남음</td>
+</tr>
+<tr>
+<td>실제와 계획</td>
+<td>실제 일부 납부만큼 미래 계획 차감, 스냅샷 이전 재가산 없음</td>
+</tr>
+<tr>
+<td>자산 이동</td>
+<td>연금이체·보증금 반환·주식매각·바우처를 새 현금소득과 혼동하지 않음</td>
+</tr>
+<tr>
+<td>과거 잠금</td>
+<td>실행 계약 가격·날짜·고정금리가 후보 탐색으로 바뀌지 않음</td>
+</tr>
+<tr>
+<td>스냅샷</td>
+<td>기존 대출·자가·미집행 목적자금·정산 유보를 0으로 초기화하거나 비상목표 하한을 낮추지 않음</td>
+</tr>
+<tr>
+<td>재시작</td>
+<td>같은 스냅샷·변경·버전에서 결과가 같고 이미 실행한 사건이 재발생하지 않음</td>
+</tr>
+<tr>
+<td>시간 정확도</td>
+<td>월말 근사와 등록된 지급일, 마감 기준일과 실제 실행일 구분</td>
+</tr>
+<tr>
+<td>조건 판정</td>
+<td>현금 부족·보호 미달·월적자·상환·자료 누락·노후 미평가 분리</td>
+</tr>
+<tr>
+<td>경보</td>
+<td>확인/보류만으로 해결되지 않음. 해결 실행과 과거 위반 기록 보존</td>
+</tr>
+<tr>
+<td>후보 탐색</td>
+<td>허용 범위·잠금 준수, 증액 대출의 미확인 상태 유지, 예산 소진 구분</td>
+</tr>
+<tr>
+<td>버전</td>
+<td>활성화 도중 실패하면 전부 취소, 오래된 버전의 승인 거절</td>
+</tr>
+<tr>
+<td>사고 처리</td>
+<td>부부 부담 100만 반영, 실제/예정 600 중복 없음, 지원 5,000은 미래 유입 감소</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>잘못된 기간·금액·단위 거절, 원문 확인 전 미적용, 목업/실제 구분</td>
+</tr>
+<tr>
+<td>데모 자료</td>
+<td>확인된 가상 거래가 데모 계산에는 반영되지만 실제 증빙 확인값으로 승격되지 않음</td>
+</tr>
+<tr>
+<td>지속 사용</td>
+<td>앱 종료·재시작 후 계획·마감·경보·선택 이유가 유지</td>
+</tr>
+<tr>
+<td>회귀</td>
+<td>기존 4단계 검사 39개 유지, 새 어댑터와 승인·저장소 검사를 추가</td>
+</tr>
+</tbody>
+</table></div>
+<p>숫자 비교는 같은 코드가 생성한 두 출력의 일치로 끝내지 않는다. 대표 원리금·비용·사고 현금 감소는 별도 수식과 원문으로 확인한다. 수작업과 AI 보조 비교를 한다면 자료정리·계산·보고서·AI 결과 검증/수정 시간을 모두 기록하고 실제 측정 전 절감률을 적지 않는다. [<a class="reference" href="#source-d6">D6</a>]</p>
+<h2 id="17-근거와-전-탭-검토-범위">17 근거와 전 탭 검토 범위</h2>
+<p>Google Docs는 2026-11-13 최초 계획 시 26개 탭을 확인했고, 팀 설명본을 작성하며 추가된 ‘상충결과’와 작성 대상인 ‘모니터링 시스템 구현’까지 28개 탭의 구성을 확인했다. 새 ‘상충결과’의 제출 기준 정렬 방향을 2절에 반영했다. 아래 목록은 요구사항 추적용이며 초기 아이디어를 모두 구현해야 한다는 뜻은 아니다. 링크는 해당 탭으로 연결한다.</p>
+<div aria-label="가로로 스크롤할 수 있는 비교표" class="table-wrap" role="region" tabindex="0"><table class="source-table">
+<thead>
+<tr>
+<th>ID</th>
+<th>탭</th>
+<th>계획에 반영한 역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="source-d1">D1</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.o1hrd950vv7t">1~3단계</a></td>
+<td>내용 없는 상위 묶음, 하위 탭 확인</td>
+</tr>
+<tr>
+<td id="source-d2">D2</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.0">1007-규리</a></td>
+<td>고객·서비스·지표·AI 책임과 검증, 몬테카를로 후보 구분</td>
+</tr>
+<tr>
+<td id="source-d3">D3</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.x0xl12xjisp2">1028-규리</a></td>
+<td>고객·소득·주택·장기 목표의 초기 후보</td>
+</tr>
+<tr>
+<td id="source-d4">D4</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.xwx4skkkzcz9">1010-혜원</a></td>
+<td>위험과 분석·AI 활용 아이디어의 발전 과정</td>
+</tr>
+<tr>
+<td id="source-d5">D5</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.740d1qo72r7q">1028 - 혜원</a></td>
+<td>서비스·지표·AI 후보, 후속 확정 범위와 분리</td>
+</tr>
+<tr>
+<td id="source-d6">D6</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.8monzajdvuxv">1029 - 회의</a></td>
+<td>수작업/AI 보조 비교와 검증·수정시간 측정</td>
+</tr>
+<tr>
+<td id="source-d7">D7</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.j3xa49rjum3a">1029-규리</a></td>
+<td>고객이 정할 조건과 계산으로 얻을 결과 분리</td>
+</tr>
+<tr>
+<td id="source-d8">D8</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.kaa0e463c2ne">1101 - 혜원</a></td>
+<td>가상 고객·자료·목표·최종 고객 판단</td>
+</tr>
+<tr>
+<td id="source-d9">D9</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.5r3j7lvn1yb9">1102 - 규리</a></td>
+<td>초기 출처·서비스·확인자료·은퇴 분석 범위</td>
+</tr>
+<tr>
+<td id="source-d10">D10</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.inynhdmao49b">본문</a></td>
+<td>내용 없는 본문 묶음, 하위 최종 확인</td>
+</tr>
+<tr>
+<td id="source-d11">D11</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.8x9nt5pldvwj">1104 혜원 AI 사용 흐름</a></td>
+<td>필수/보조 기능, 관련 스트레스, 제도 자동화 범위</td>
+</tr>
+<tr>
+<td id="source-d12">D12</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.m02vjoyvlj6y">1104 규리 재무설계 프로세스와 AI</a></td>
+<td>4·5·6 구분, 기준계획·실제·변경·경보·승인·책임</td>
+</tr>
+<tr>
+<td id="source-d13">D13</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.hs0gzc3k0u5k">앙딱정</a></td>
+<td>공유 계산과 점검·선택·버전의 간단한 흐름</td>
+</tr>
+<tr>
+<td id="source-d14">D14</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.kxnvfprcdalw">항목들 + 주택 구입 절차</a></td>
+<td>초기 450 지출·휴직·거래일, 후속 설정과 대조</td>
+</tr>
+<tr>
+<td id="source-d15">D15</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.6wh5b1eqar7z">4단계 초안 작성 완료</a></td>
+<td>기존 비교·시험의 출발점</td>
+</tr>
+<tr>
+<td id="source-d16">D16</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.coau5uitotvj">4단계 검토 ㅎㅎ</a></td>
+<td>장기 검증·보호자금 구성·세부 장부·26/21 구분</td>
+</tr>
+<tr>
+<td id="source-d17">D17</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.iznjxipa278x">4단계 피드백 반영본</a></td>
+<td>480 계열의 수정 판단과 조건</td>
+</tr>
+<tr>
+<td id="source-d18">D18</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.7b6w3spna1f3">고객 정보 및 1~3단계 최종</a></td>
+<td>원래 고객·자산·목표·450 기준과 장기 미평가</td>
+</tr>
+<tr>
+<td id="source-d19">D19</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.gipt65gh5bum">1107-규리 항목정리</a></td>
+<td>480 프로필·돌봄·휴직·보호자금·지급일·출처</td>
+</tr>
+<tr>
+<td id="source-d20">D20</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.eb1rmjivavp4">스토리텔링 제안</a></td>
+<td>아내의 회복·진료·돌봄을 우선하는 고객 맥락</td>
+</tr>
+<tr>
+<td id="source-d21">D21</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.7clkvywcazky">1110 규리</a></td>
+<td>준비행동부터 실행·증빙·점검 인계</td>
+</tr>
+<tr>
+<td id="source-d22">D22</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.cwhez27lo93u">1110 6단계 규리</a></td>
+<td>사고 사례와 후반의 변경관리·최소변경·CSV·규칙 탐색</td>
+</tr>
+<tr>
+<td id="source-d23">D23</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.ysojydkiem4">모니터링 시스템</a></td>
+<td>입력·화면·Streamlit/SQLite·시연 목표값</td>
+</tr>
+<tr>
+<td id="source-d24">D24</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.75fk81fc3m1h">1110 혜원 수정 계획</a></td>
+<td>4.5 선택 근거·수치 통일·4/6 중복 해소</td>
+</tr>
+<tr>
+<td id="source-d25">D25</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.q2unc6eh9p57">1~5단계 합본</a></td>
+<td>450 프로필·재계산 제시값·말미 5단계 불일치</td>
+</tr>
+<tr>
+<td id="source-d26">D26</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.rsl3irm83hw7">4단계돌린결과</a></td>
+<td>실제 구현의 480 결과·6억 조건부 후보·시험 범위 구분</td>
+</tr>
+<tr>
+<td id="source-d27">D27</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.nrvoo0amh59x">상충결과</a></td>
+<td>제출은 합본 기준으로 정렬, 6억 이하 후보 재계산, 임차 유지와 조건부 재심사</td>
+</tr>
+<tr>
+<td id="source-d28">D28</td>
+<td><a href="https://docs.google.com/document/d/1FFDyGXzR25NgBZ-fxijBPt8g2lSlLKEExJjPv9n1_hY/edit?tab=t.gey3fkp7eqou">모니터링 시스템 구현</a></td>
+<td>이 계획을 팀원에게 쉽게 설명해 기록할 대상 탭. 최초 확인 시 비어 있었음</td>
+</tr>
+</tbody>
+</table></div>
+<p>기술 근거는 공식 문서에서 확인했다. 특정 버전 번호는 구현 환경에서 설치·검증한 뒤 고정한다.</p>
+<ul>
+<li id="source-t1"><a class="reference" href="#source-t1">T1</a> <a href="https://docs.streamlit.io/develop/concepts/architecture/session-state">Streamlit Session State</a> — 세션 상태·재실행과 영구 저장의 역할 구분.</li>
+<li id="source-t2"><a class="reference" href="#source-t2">T2</a> <a href="https://docs.streamlit.io/develop/api-reference/execution-flow/st.form">Streamlit 폼</a> — 제출 시 입력을 묶어서 처리.</li>
+<li id="source-t3"><a class="reference" href="#source-t3">T3</a> <a href="https://www.sqlite.org/foreignkeys.html">SQLite 외래키</a> — 연결별 외래키 활성화.</li>
+<li id="source-t4"><a class="reference" href="#source-t4">T4</a> <a href="https://www.sqlite.org/lang_transaction.html">SQLite 트랜잭션</a> — 활성화의 일괄 처리·쓰기 충돌.</li>
+</ul>
+<h2 id="18-계획-검토-기록">18 계획 검토 기록</h2>
+<p>이 기록은 계획의 검토이며 앱의 구현·테스트 완료를 뜻하지 않는다.</p>
+<ol>
+<li>원문 범위 대조: 전체 탭에서 초기 후보와 후속 구현 방향을 분리하고 필수·확장 기능을 구분했다. 450/480과 합본 내부 5단계 불일치를 확인했다.</li>
+<li>코드 연동 대조: 기존 엔진의 매입 후 초기 상태와 스냅샷 재시작 공백, 보조 사건 범위, 초안 기준계획·덮어쓰기 출력을 확인했다.</li>
+<li>구현 흐름 검토: 입력·마감·현재 상태·경보·수정·선택·버전 전환을 독립 검토했다. 비상현금 목표 하한의 이관과 가상 자료 전용 확인 경로를 보완하고, 지원금 보류를 영구 감액과 구분했다. 기능 16개·전체 탭 목록·표 구조·로컬 링크·코드블록을 점검했다. 추가된 ‘상충결과’는 제출용 기준 정렬에 반영하고, 팀 설명 대상 탭은 계산 근거와 구분했다.</li>
+</ol>
+<footer class="doc-footer">이 HTML은 원본 Markdown의 전체 내용을 변환한 열람본입니다. 구현 완료 상태를 뜻하지 않습니다.<br>원본 SHA-256 19812cc5593a812e6523ac6daebe39c889f50bafc2485de394bd520b88aa4caf</footer></main></div>
+<script>const links=[...document.querySelectorAll('aside nav a')];const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){links.forEach(link=>link.classList.toggle('active',link.hash==='#'+entry.target.id));}}},{rootMargin:'-6% 0px -74% 0px'});document.querySelectorAll('main h2').forEach(heading=>observer.observe(heading));</script></body></html>

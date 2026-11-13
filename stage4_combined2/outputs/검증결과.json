@@ -1,0 +1,283 @@
+{
+  "input_checks": [
+    {
+      "severity": "WARNING",
+      "code": "REPAYMENT_LIMIT_UNKNOWN",
+      "message": "고객 합의 상환한도가 없어 해당 규칙은 UNKNOWN입니다.",
+      "path": "case.repayment_constraint"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[0]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[1]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[2]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[3]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[4]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[5]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[6]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[7]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[8]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[9]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[10]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[11]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[12]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[13]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[14]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[15]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[16]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[17]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[18]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[19]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[20]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[21]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[22]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[23]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[24]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[25]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[26]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "LOAN_APPROVAL_UNKNOWN",
+      "message": "실제 대출 승인·한도는 확인되지 않았습니다.",
+      "path": "scenarios[27]"
+    },
+    {
+      "severity": "WARNING",
+      "code": "HISTORICAL_POLICY_SNAPSHOT",
+      "message": "제도는 사례 재현용 스냅샷이며 실제 실행 승인이 아닙니다.",
+      "path": "policy"
+    }
+  ],
+  "source_display_checks": [
+    {
+      "metric": "birth_cash",
+      "source_display": 1117,
+      "calculated": 1116.5291329736426,
+      "difference": -0.4708670263573822,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "base_closing_cash",
+      "source_display": 8038,
+      "calculated": 8037.576391293927,
+      "difference": -0.4236087060726277,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "compound_post_min_free",
+      "source_display": 941,
+      "calculated": 941.1477964559288,
+      "difference": 0.14779645592875568,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "compound_ending_surplus",
+      "source_display": 2,
+      "calculated": 2.220302050805531,
+      "difference": 0.2203020508055311,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "base_common_networth",
+      "source_display": 56651,
+      "calculated": 56651.33022634939,
+      "difference": 0.3302263493897044,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "compound_common_networth",
+      "source_display": 53890,
+      "calculated": 53890.225629797584,
+      "difference": 0.22562979758367874,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "pension_2031_06",
+      "source_display": 7000,
+      "calculated": 7000.0,
+      "difference": 0.0,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    },
+    {
+      "metric": "pension_2036_06",
+      "source_display": 13000,
+      "calculated": 13000.0,
+      "difference": 0.0,
+      "tolerance": 0.5000001,
+      "status": "PASS"
+    }
+  ],
+  "loan_boundaries": [
+    {
+      "year": 2027,
+      "loan": 41414,
+      "one_less_margin": -0.006165919855528917,
+      "boundary_margin": 0.6985821874877947,
+      "monotonic_slope_lower": 0.7047481073433236,
+      "scope": "2031.6까지 잔금·매입 후 월말의 비상·목적자금 전액 유지; 계약/은행 승인은 별도"
+    },
+    {
+      "year": 2030,
+      "loan": 33286,
+      "one_less_margin": -0.7717516122945898,
+      "boundary_margin": 0.12625227933310382,
+      "monotonic_slope_lower": 0.8980038916276936,
+      "scope": "2031.6까지 잔금·매입 후 월말의 비상·목적자금 전액 유지; 계약/은행 승인은 별도"
+    },
+    {
+      "year": 2031,
+      "loan": 31304,
+      "one_less_margin": -0.248234282217214,
+      "boundary_margin": 0.7195564204020577,
+      "monotonic_slope_lower": 0.9624224863891503,
+      "scope": "2031.6까지 잔금·매입 후 월말의 비상·목적자금 전액 유지; 계약/은행 승인은 별도"
+    }
+  ],
+  "source_boundary_expected": [
+    41414,
+    33286,
+    31304
+  ],
+  "source_revision": "Tab31 고정 정산유보 삭제·금액처리주의점 반영",
+  "numeric_source_status": "PASS"
+}

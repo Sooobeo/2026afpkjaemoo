@@ -1,0 +1,5 @@
+2026-11-13 Asia/Seoul
+29 scenarios regenerated; all source-display checks PASS.
+python -m unittest discover -s tests -v: Ran 13 tests; OK.
+Independent QA: fixed-loan cash, monthly surplus and net worth unchanged; released allocation equals old retained balance; new minimum loans and one-unit-below failure confirmed.
+Internal values remain unrounded; customer report uses integer ten-thousand KRW and separate won-unit payment display.
