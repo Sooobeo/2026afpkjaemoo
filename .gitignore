@@ -1,0 +1,8 @@
+# Local working files and verification artifacts
+/.codex-work/
+
+# Site deployment bundles
+/stage6_monitoring/site-*.tar.gz
+
+# Microsoft Office lock files
+~$*
